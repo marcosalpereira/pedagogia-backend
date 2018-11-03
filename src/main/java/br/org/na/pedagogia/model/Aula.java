@@ -27,7 +27,7 @@ public class Aula extends BaseModel {
 	@ManyToOne
 	private Professor professor;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "aula")
 	private List<Presenca> presencas;
 	
 	@ManyToOne

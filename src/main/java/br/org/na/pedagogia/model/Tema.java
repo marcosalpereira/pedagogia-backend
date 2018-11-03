@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,6 +20,9 @@ import lombok.Setter;
 public class Tema extends BaseModel {
 
 	private static final long serialVersionUID = 1;
+	
+	@ManyToOne
+	private Materia materia;
 
 	@Column
 	private Integer numero;
@@ -26,7 +30,7 @@ public class Tema extends BaseModel {
 	@Length(max = 100)
 	private String nome;
 
-	@OneToMany
+	@OneToMany(mappedBy = "tema")
 	private List<Capitulo> capitulos;
 
 }

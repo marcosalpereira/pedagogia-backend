@@ -10,6 +10,9 @@ import javax.persistence.Table;
 public class Presenca extends BaseModel {
 
 	private static final long serialVersionUID = 1L;
+	
+	@ManyToOne
+	private Aula aula;
 
 	@ManyToOne
 	private Aluno aluno;

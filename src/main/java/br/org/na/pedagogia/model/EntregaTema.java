@@ -1,29 +1,32 @@
 package br.org.na.pedagogia.model;
 
-import java.util.List;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tema_entregue")
+@Table(name = "entrega_tema")
 @Getter
 @Setter
-public class TemaEntregue extends BaseModel {
+public class EntregaTema extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
     private Turma turma;
 	
-	@ManyToOne
-    private Tema tema;
+	@ManyToOne(optional = false)
+	private Aluno aluno;
 	
-	@OneToMany
-    private List<Entrega> entregas;
+	@Column
+	private boolean entregue;
+	
+	@Column
+    private Date data;
 
 }
