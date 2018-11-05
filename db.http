@@ -1,7 +1,8 @@
 
 POST http://localhost:8080/pedagogia/api/alunos
+Content-Type: application/json
 
-{ "nome": "oto", "sede": "/api/alunos/1" }
+{ "nome": "oto", "sede": {"id": 1}}
 
 ###
 
@@ -9,7 +10,7 @@ GET http://localhost:8080/pedagogia/api/alunos
 
 ###
 
-GET http://localhost:8080/pedagogia/api/alunos/2
+GET http://localhost:8080/pedagogia/api/alunos/1
 
 ###
 
@@ -35,13 +36,13 @@ GET http://localhost:8080/pedagogia/api/aulas?idMateria=1&idProfessor=9&data=201
 POST http://localhost:8080/pedagogia/api/aulas
 Content-Type: application/json
 
-{ 
-    "professor": {"id": 9}, 
-    "materia": {"id": 1}, 
-    "data": "2012-04-23", 
-    "observacao": "obs", 
+{
+    "professor": {"id": 9},
+    "materia": {"id": 1},
+    "data": "2012-04-23",
+    "observacao": "obs",
     "capitulo": {"id": 5},
-    "presencas": [ 
+    "presencas": [
         {"aluno": {"id": 3}, "presente": true},
         {"aluno": {"id": 4}, "presente": true}
     ]
