@@ -31,9 +31,9 @@ public class AulaController {
 
 	@GetMapping
 	public List<AulaDTO> findAll(
-			@RequestParam("idMateria") long idTurma,
-			@RequestParam("idProfessor") long idProfessor,
-			@RequestParam("idMateria") long idMateria,
+					 @RequestParam("idTurma") long idTurma,
+					 @RequestParam("idProfessor") long idProfessor,
+					 @RequestParam("idMateria") long idMateria,
 			@NotNull @RequestParam("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data) {
 		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, idProfessor, data));
 		return aulaRepository.findAll(ex).stream()

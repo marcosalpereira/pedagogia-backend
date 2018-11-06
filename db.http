@@ -14,7 +14,19 @@ GET http://localhost:8080/pedagogia/api/alunos/1
 
 ###
 
-GET http://localhost:8080/pedagogia/api/turmas
+POST http://localhost:8080/pedagogia/api/turmas
+Content-Type: application/json
+
+{
+    "nome": "foo",
+    "professores": [{"id": 1}],
+    "alunos": [{"id": 1}, {"id": 2}],
+    "diaSemana": "WEDNESDAY"
+}
+
+###
+
+GET http://localhost:8080/pedagogia/api/turmas?diaSemana=THURSDAY
 
 ###
 

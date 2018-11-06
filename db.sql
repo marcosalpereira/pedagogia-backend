@@ -1,47 +1,51 @@
-DROP SCHEMA public cascade;
+DROP SCHEMA public cascade; CREATE SCHEMA public AUTHORIZATION na;
 
-CREATE SCHEMA public
-  AUTHORIZATION na;
+begin transaction;
 
-insert into sede (id, nome) values (nextval('sede_seq'), 'Fortaleza')
+-- Select * from sede
+insert into sede (nome) values ('Fortaleza')
 
-select * from aluno
-insert into aluno (id,nome,sede_id) values
-(nextval('aluno_seq'), 'ivo', 1),
-(nextval('aluno_seq'), 'rui', 1),
-(nextval('aluno_seq'), 'eva', 1),
-(nextval('aluno_seq'), 'oto', 1),
-(nextval('aluno_seq'), 'oma', 1),
+-- select * from aluno
+insert into aluno (nome,sede_id) values
+('ivo', 1),
+('rui', 1),
+('eva', 1),
+('oto', 1),
+('oma', 1);
 
-insert into materia (id,nome) values
-(1,'Introdução a Sabedoria do Oriente'),
-(2, 'Psicologia')
+insert into materia (nome) values
+('Introdu??o a Sabedoria do Oriente'),
+('Psicologia');
 
-insert into tema (id, nome, numero, materia_id) values
-(nextval('_seq'), 'Tema I', 1,1),
-(nextval('_seq'), 'Tema II', 2,1),
-(nextval('_seq'), 'Tema III', 3,1),
-(nextval('_seq'), 'Tema IV', 4,1);
+insert into tema ( nome, numero, materia_id) values
+('Tema I', 1,1),
+('Tema II', 2,1),
+('Tema III', 3,1),
+('Tema IV', 4,1);
 
-insert into capitulo (id, nome, numero, tema_id) values
-(nextval('_seq'), 'Introdução', 1,1),
-(nextval('_seq'), 'O Enigma de Deus', 2,1),
 
-(nextval('_seq'), 'Sistema Solar', 1,2),
-(nextval('_seq'), 'Triplo Logos Solar', 2,2);
+insert into capitulo ( nome, numero, tema_id) values
+('Introdu??o', 1,1),
+('O Enigma de Deus', 2,1),
+('Sistema Solar', 1,2),
+('Triplo Logos Solar', 2,2);
 
-insert into professor (id, nome) values
-(nextval('_seq'), 'Levi'),
-(nextval('_seq'), 'Plicia'),
-(nextval('_seq'), 'Aline');
+insert into professor ( nome) values
+('Levi'),
+('Plicia'),
+('Aline');
 
-insert into turma (id, nome) values
-(nextval('_seq'), 'N2 Quarta Seneca'),
-(nextval('_seq'), 'N2 Quarta Socrates');
+
+
+-- select * from turma
+insert into turma ( nome, dia_semana) values
+('N2 Quarta Seneca', 4),
+('N2 Quarta Socrates', 4);
 
 insert into turma_alunos (turma_id, alunos_id) values
-(12,1),(12,2),(12,3),(12,4),(12,5);
+(1,1),(1,2),(1,3),(1,4),(1,5);
 
 insert into turma_professores (turma_id, professores_id) values
-(12,9),(12,10),(12,11);
+(1,1),(1,2),(1,3);
 
+commit transaction;

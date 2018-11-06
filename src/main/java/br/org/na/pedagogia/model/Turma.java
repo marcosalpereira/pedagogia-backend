@@ -1,8 +1,11 @@
 package br.org.na.pedagogia.model;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -34,9 +37,17 @@ public class Turma extends BaseModel {
 
 	@OneToOne
 	private Aluno representante;
+	
+	@NotNull
+	@Enumerated(EnumType.ORDINAL)
+	private DayOfWeek diaSemana;
 
 	public Turma(Long id) {
 		super(id);
+	}
+	
+	public Turma(DayOfWeek diaSemana) {
+		this.diaSemana = diaSemana;
 	}
 	
 	
