@@ -1,6 +1,7 @@
 package br.org.na.pedagogia.rest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.na.pedagogia.dto.EntregaTemaDTO;
 import br.org.na.pedagogia.model.EntregaTema;
 import br.org.na.pedagogia.model.Turma;
 import br.org.na.pedagogia.repository.EntregaTemaRepository;
@@ -26,9 +28,11 @@ public class EntregaTemaController {
 	private EntregaTemaRepository repository;
 
 	@GetMapping
-	public List<EntregaTema> findAll(
+	public List<EntregaTemaDTO> findAll(
 			@Pattern(regexp="[0-9]+") @RequestParam("idTurma") Long idTurma) {
-		return repository.findByTurma(new Turma(idTurma));
+		return repository.findByTurma(new Turma(idTurma)).stream()
+		          .map(entity -> entity.toDTO(EntregaTemaDTO.class))
+		          .collect(Collectors.toList());
 	}
 	
 	@PostMapping

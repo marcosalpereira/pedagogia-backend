@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,20 +36,15 @@ public class AlunoController {
 	@GetMapping
 	public List<AlunoDTO> findAll() {
 		return repository.findAll().stream()
-		          .map(post -> convertToDto(post))
+		          .map(entity -> entity.toDTO(AlunoDTO.class))
 		          .collect(Collectors.toList());
 	}
 	
 	@GetMapping("/{id}")
-	public AlunoDTO findById(@PathVariable("id") Long id) {//, HttpServletResponse response) {
+	public AlunoDTO findById(@PathVariable("id") Long id) {
 		return repository.findById(id)
-			.map(aluno -> convertToDto(aluno))
+			.map(aluno -> aluno.toDTO(AlunoDTO.class))
 			.orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND) );	             	
 	}
-	
-	private AlunoDTO convertToDto(Aluno aluno) {
-	    AlunoDTO dto = new ModelMapper().map(aluno, AlunoDTO.class);
-	    return dto;
-	}	
 	
 }

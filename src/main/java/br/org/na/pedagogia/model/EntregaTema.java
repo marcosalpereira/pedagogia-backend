@@ -8,8 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +18,6 @@ import lombok.Setter;
 public class EntregaTema extends BaseModel {
 	private static final long serialVersionUID = 1L;
 	
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
     private Turma turma;
 	

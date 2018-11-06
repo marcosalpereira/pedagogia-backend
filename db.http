@@ -29,7 +29,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/pedagogia/api/aulas?idMateria=1&idProfessor=9&data=2012-04-22
+GET http://localhost:8080/pedagogia/api/aulas?idTurma=1&idMateria=1&idProfessor=9&data=2012-04-22
 
 ###
 
@@ -37,6 +37,7 @@ POST http://localhost:8080/pedagogia/api/aulas
 Content-Type: application/json
 
 {
+    "turma": {"id": 1},
     "professor": {"id": 9},
     "materia": {"id": 1},
     "data": "2012-04-23",
@@ -47,3 +48,4 @@ Content-Type: application/json
         {"aluno": {"id": 4}, "presente": true}
     ]
 }
+

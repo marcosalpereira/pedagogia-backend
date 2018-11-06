@@ -3,6 +3,7 @@ package br.org.na.pedagogia.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,9 +13,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,14 +30,17 @@ public class Aula extends BaseModel {
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date data;
+
+	@NotNull
+	@ManyToOne
+	private Turma turma;
 	
 	@NotNull
 	@ManyToOne
 	private Professor professor;
 	
 	@NotNull
-	@OneToMany(mappedBy = "aula")
-	@Cascade(CascadeType.ALL)
+	@OneToMany(mappedBy = "aula", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
 	
 	@NotNull
@@ -53,7 +54,10 @@ public class Aula extends BaseModel {
 	@Size(max = 300)
 	private String observacao;
 	
-	public Aula(Long materia, Long professor, Date data) {
+	public Aula(long idTurma, long materia, long professor, Date data) {
+		assert data != null;
+		
+		this.turma = new Turma(idTurma);
 		this.materia = new Materia(materia);
 		this.professor = new Professor(professor);
 		this.data = data;
