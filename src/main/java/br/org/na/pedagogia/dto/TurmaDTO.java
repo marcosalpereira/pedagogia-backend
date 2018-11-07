@@ -15,5 +15,5 @@ public class TurmaDTO extends BaseDTO {
 	private List<ProfessorDTO> professores;
 	private List<AlunoDTO> alunos;
 	private AlunoDTO representante;
-	private DayOfWeek dayOfWeek;
+	private DayOfWeek diaSemana;
 }

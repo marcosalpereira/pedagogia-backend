@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,14 +26,18 @@ public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
+	//TODO add Sede
+	
 	@NotNull
 	@Size(max = 100)
 	private String nome;
 
 	@OneToMany
+	@JoinColumn(name="turma_id")
 	private List<Professor> professores;
 
 	@OneToMany
+	@JoinColumn(name="turma_id")
 	private List<Aluno> alunos;
 
 	@OneToOne

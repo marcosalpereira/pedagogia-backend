@@ -3,7 +3,7 @@ DROP SCHEMA public cascade; CREATE SCHEMA public AUTHORIZATION na;
 begin transaction;
 
 -- Select * from sede
-insert into sede (nome) values ('Fortaleza')
+insert into sede (nome) values ('Fortaleza');
 
 -- select * from aluno
 insert into aluno (nome,sede_id) values
