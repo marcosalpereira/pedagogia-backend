@@ -28,9 +28,11 @@ public class TurmaController {
 	private TurmaRepository repository;
 	
 	@GetMapping
-	public List<TurmaDTO> findAll(@RequestParam("diaSemana") DayOfWeek diaSemana) {
-		Example<Turma> ex = Example.of(new Turma(diaSemana));
-		return repository.findAll(ex).stream()
+	public List<TurmaDTO> findAll(
+			@RequestParam("idSede") long idSede,
+			@RequestParam("diaSemana") DayOfWeek diaSemana) {
+		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana));
+		return repository.findAll().stream()
           .map(entity -> entity.toDTO(TurmaDTO.class))
           .collect(Collectors.toList());
 	}

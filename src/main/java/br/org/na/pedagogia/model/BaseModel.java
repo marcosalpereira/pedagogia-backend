@@ -37,7 +37,7 @@ public abstract class BaseModel implements Serializable {
 	@Column(columnDefinition = "INTEGER DEFAULT 0")
 	private int version;
 
-	public BaseModel(Long id) {
+	public BaseModel(long id) {
 		this.id = id;
 	}
 	

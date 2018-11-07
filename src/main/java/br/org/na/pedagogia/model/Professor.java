@@ -19,7 +19,7 @@ public class Professor extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 
-	public Professor(Long id) {
+	public Professor(long id) {
 		super(id);
 	}
 	

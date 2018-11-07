@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/pedagogia/api/turmas?diaSemana=WEDNESDAY
+GET http://localhost:8080/pedagogia/api/turmas?diaSemana=WEDNESDAY&idSede=1
 
 ###
 
@@ -41,7 +41,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/pedagogia/api/aulas?idTurma=1&idMateria=1&idProfessor=9&data=2012-04-22
+GET http://localhost:8080/pedagogia/api/aulas?idTurma=1&idMateria=1&idProfessor=9&data=
 
 ###
 

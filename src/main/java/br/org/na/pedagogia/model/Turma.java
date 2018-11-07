@@ -6,8 +6,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -26,18 +27,17 @@ public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
-	//TODO add Sede
+	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	private Sede sede;
 	
 	@NotNull
 	@Size(max = 100)
 	private String nome;
 
-	@OneToMany
-	@JoinColumn(name="turma_id")
+	@ManyToMany
 	private List<Professor> professores;
 
-	@OneToMany
-	@JoinColumn(name="turma_id")
+	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Aluno> alunos;
 
 	@OneToOne
@@ -47,11 +47,12 @@ public class Turma extends BaseModel {
 	@Enumerated(EnumType.ORDINAL)
 	private DayOfWeek diaSemana;
 
-	public Turma(Long id) {
+	public Turma(long id) {
 		super(id);
 	}
 	
-	public Turma(DayOfWeek diaSemana) {
+	public Turma(long idSede, DayOfWeek diaSemana) {
+		this.sede = new Sede(idSede);
 		this.diaSemana = diaSemana;
 	}
 	

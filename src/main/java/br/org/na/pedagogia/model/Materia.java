@@ -3,6 +3,7 @@ package br.org.na.pedagogia.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -22,10 +23,10 @@ public class Materia extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 
-	@OneToMany(mappedBy = "materia")
+	@OneToMany(mappedBy = "materia", fetch = FetchType.EAGER)
 	private List<Tema> temas;
 
-	public Materia(Long id) {
+	public Materia(long id) {
 		super(id);
 	}
 	

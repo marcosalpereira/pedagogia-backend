@@ -7,7 +7,7 @@ import br.org.na.pedagogia.model.Aluno;
 
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Long> {
-	
+
 //	@Override
 //	@RestResource(exported = false)
 //    void delete(Aluno entity);

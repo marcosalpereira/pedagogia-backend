@@ -1,5 +1,7 @@
 DROP SCHEMA public cascade; CREATE SCHEMA public AUTHORIZATION na;
 
+-- rollback transaction;
+
 begin transaction;
 
 -- Select * from sede
@@ -38,9 +40,9 @@ insert into professor ( nome) values
 
 
 -- select * from turma
-insert into turma ( nome, dia_semana) values
-('N2 Quarta Seneca', 4),
-('N2 Quarta Socrates', 4);
+insert into turma ( nome, dia_semana, sede_id) values
+('N2 Quarta Seneca', 2, 1),
+('N2 Quarta Socrates', 2, 1);
 
 insert into turma_alunos (turma_id, alunos_id) values
 (1,1),(1,2),(1,3),(1,4),(1,5);

@@ -1,1 +1,7 @@
 @RequestParam(... required=false)
+
+
+import { throwError } from 'rxjs';
+
+@GetMapping(produces="application/json")
+@GetMapping(path="/", produces="application/json")  ===> cors error

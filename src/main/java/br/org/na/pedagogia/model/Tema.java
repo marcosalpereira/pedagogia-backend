@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -31,10 +32,10 @@ public class Tema extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 
-	@OneToMany(mappedBy = "tema")
+	@OneToMany(mappedBy = "tema", fetch = FetchType.EAGER)
 	private List<Capitulo> capitulos;
 
-	public Tema(Long id) {
+	public Tema(long id) {
 		super(id);
 	}
 
