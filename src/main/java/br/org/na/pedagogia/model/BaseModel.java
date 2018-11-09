@@ -17,11 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @MappedSuperclass
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public abstract class BaseModel implements Serializable {
 	@Transient @JsonIgnore
 	private ModelMapper mapper = new ModelMapper();

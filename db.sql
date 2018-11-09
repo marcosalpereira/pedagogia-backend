@@ -1,4 +1,4 @@
-DROP SCHEMA public cascade; CREATE SCHEMA public AUTHORIZATION na;
+﻿-- DROP SCHEMA public cascade; CREATE SCHEMA public AUTHORIZATION na;
 
 -- rollback transaction;
 

@@ -25,6 +25,6 @@ public class Presenca extends BaseModel {
 	private Aluno aluno;
 	
 	@Column
-	private boolean presente;
+	private Boolean presente;
 	
 }

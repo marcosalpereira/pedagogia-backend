@@ -8,29 +8,34 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "entrega_tema")
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
+@JsonIgnoreProperties(value = {"turma", "tema"}, allowGetters = true, allowSetters = false)
 public class EntregaTema extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Turma turma;
 
-	@ManyToOne(optional = false)
-	private Tema tema;;
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	private Tema tema;
 
 	@ManyToOne(optional = false)
 	private Aluno aluno;
 
 	@Column
-	private boolean entregue;
+	private Boolean entregue;
 
 	@Column
 	private Date data;

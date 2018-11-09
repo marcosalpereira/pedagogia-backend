@@ -32,13 +32,15 @@ public class EntregaTemaController {
 			@RequestParam("idTema") long idTema
 			) {
 		Example<EntregaTema> ex = Example.of(new EntregaTema(idTurma, idTema));
-		return repository.findAll(ex).stream()
+		List<EntregaTema> entregas = repository.findAll(ex);
+		return entregas.stream()
 		          .map(entity -> entity.toDTO(EntregaTemaDTO.class))
 		          .collect(Collectors.toList());
 	}
 	
 	@PostMapping
 	public List<Long> registrarEntrega(@RequestBody @Valid List<EntregaTema> entregas) {
+//		entregas.stream().forEach(e -> {);
 		List<EntregaTema> entity = repository.saveAll(entregas);
 		return entity.stream().map(e -> e.getId()).collect(Collectors.toList());
 	}
