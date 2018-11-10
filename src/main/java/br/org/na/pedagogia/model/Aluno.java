@@ -7,6 +7,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +16,7 @@ import lombok.Setter;
 @Table(name = "aluno")
 @Getter
 @Setter
+@JsonIgnoreProperties(value = { "sede" }, allowSetters = true)
 public class Aluno extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
@@ -21,7 +24,7 @@ public class Aluno extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Sede sede;
 
 }

@@ -7,12 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Transient;
 import javax.persistence.Version;
-
-import org.modelmapper.ModelMapper;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +20,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public abstract class BaseModel implements Serializable {
-	@Transient @JsonIgnore
-	private ModelMapper mapper = new ModelMapper();
-
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -43,9 +35,4 @@ public abstract class BaseModel implements Serializable {
 		this.id = id;
 	}
 	
-	public <T> T toDTO(Class<T> dest) {
-		return mapper.map(this, dest);
-	}
-
-
 }

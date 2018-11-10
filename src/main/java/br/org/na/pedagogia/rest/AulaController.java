@@ -2,7 +2,6 @@ package br.org.na.pedagogia.rest;
 
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.na.pedagogia.dto.AulaDTO;
 import br.org.na.pedagogia.model.Aula;
 import br.org.na.pedagogia.repository.AulaRepository;
 
@@ -30,15 +28,13 @@ public class AulaController {
 	private AulaRepository aulaRepository;
 
 	@GetMapping
-	public List<AulaDTO> findAll(
+	public List<Aula> findAll(
 					 @RequestParam("idTurma") long idTurma,
 					 @RequestParam("idProfessor") long idProfessor,
 					 @RequestParam("idMateria") long idMateria,
 			@NotNull @RequestParam("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data) {
 		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, idProfessor, data));
-		return aulaRepository.findAll(ex).stream()
-		          .map(entity -> entity.toDTO(AulaDTO.class))
-		          .collect(Collectors.toList());
+		return aulaRepository.findAll(ex);
 	}
 	
 	@PostMapping

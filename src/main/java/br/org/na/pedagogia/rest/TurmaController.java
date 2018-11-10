@@ -2,7 +2,6 @@ package br.org.na.pedagogia.rest;
 
 import java.time.DayOfWeek;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.na.pedagogia.dto.TurmaDTO;
 import br.org.na.pedagogia.model.Turma;
 import br.org.na.pedagogia.repository.TurmaRepository;
 
@@ -28,13 +26,11 @@ public class TurmaController {
 	private TurmaRepository repository;
 	
 	@GetMapping
-	public List<TurmaDTO> findAll(
+	public List<Turma> findAll(
 			@RequestParam("idSede") long idSede,
 			@RequestParam("diaSemana") DayOfWeek diaSemana) {
 		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana));
-		return repository.findAll().stream()
-          .map(entity -> entity.toDTO(TurmaDTO.class))
-          .collect(Collectors.toList());
+		return repository.findAll(ex);
 	}
 	
 	@PostMapping

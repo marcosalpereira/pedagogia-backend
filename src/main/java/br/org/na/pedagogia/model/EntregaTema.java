@@ -21,7 +21,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-@JsonIgnoreProperties(value = {"turma", "tema"}, allowGetters = true, allowSetters = false)
+@JsonIgnoreProperties(value = {"turma", "tema"}, allowSetters = true)
 public class EntregaTema extends BaseModel {
 	private static final long serialVersionUID = 1L;
 

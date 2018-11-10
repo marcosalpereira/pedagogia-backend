@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.na.pedagogia.dto.EntregaTemaDTO;
 import br.org.na.pedagogia.model.EntregaTema;
 import br.org.na.pedagogia.repository.EntregaTemaRepository;
 
@@ -27,20 +26,16 @@ public class EntregaTemaController {
 	private EntregaTemaRepository repository;
 
 	@GetMapping
-	public List<EntregaTemaDTO> findAll(
+	public List<EntregaTema> findAll(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idTema") long idTema
 			) {
 		Example<EntregaTema> ex = Example.of(new EntregaTema(idTurma, idTema));
-		List<EntregaTema> entregas = repository.findAll(ex);
-		return entregas.stream()
-		          .map(entity -> entity.toDTO(EntregaTemaDTO.class))
-		          .collect(Collectors.toList());
+		return repository.findAll(ex);
 	}
 	
 	@PostMapping
 	public List<Long> registrarEntrega(@RequestBody @Valid List<EntregaTema> entregas) {
-//		entregas.stream().forEach(e -> {);
 		List<EntregaTema> entity = repository.saveAll(entregas);
 		return entity.stream().map(e -> e.getId()).collect(Collectors.toList());
 	}

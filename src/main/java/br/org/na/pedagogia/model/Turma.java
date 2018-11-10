@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIgnoreProperties(value = {"sede", "professores"}, allowSetters=true)
 public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
@@ -55,6 +58,5 @@ public class Turma extends BaseModel {
 		this.sede = new Sede(idSede);
 		this.diaSemana = diaSemana;
 	}
-	
 	
 }
