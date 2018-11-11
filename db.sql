@@ -16,9 +16,13 @@ insert into aluno (nome,sede_id) values
 ('oma', 1);
 
 insert into materia (nome) values
-('Introdu??o a Sabedoria do Oriente'),
+('Introducao a Sabedoria do Oriente'),
 ('Psicologia');
 
+
+-- select * from entrega_tema
+-- truncate table entrega_tema cascade;
+-- UPDATE entrega_tema set version = 99
 insert into tema ( nome, numero, materia_id) values
 ('Tema I', 1,1),
 ('Tema II', 2,1),
