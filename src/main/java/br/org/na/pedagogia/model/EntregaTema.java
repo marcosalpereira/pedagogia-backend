@@ -46,7 +46,7 @@ public class EntregaTema extends BaseModel {
 		tema = new Tema(idTema);
 	}
 
-	public static void fillLazzyProperties(EntregaTema src, List<EntregaTema> entregas) {
+	public static void prepararDeserializacao(EntregaTema src, List<EntregaTema> entregas) {
 		entregas.forEach(entrega -> {
 	        entrega.setTema(src.getTema());
 	        entrega.setTurma(src.getTurma());

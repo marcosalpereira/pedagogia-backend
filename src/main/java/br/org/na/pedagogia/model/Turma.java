@@ -14,7 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,11 +26,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"sede", "professores"}, allowSetters=true)
+// @JsonIgnoreProperties(value = {"sede", "professores"}, allowSetters=true)
 public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
+	@Fetch(FetchMode.SELECT)
 	@ManyToOne(fetch=FetchType.LAZY, optional = false)
 	private Sede sede;
 	
@@ -38,9 +40,11 @@ public class Turma extends BaseModel {
 	private String nome;
 
 	@ManyToMany
-	private List<Professor> professores;
+	@Fetch(FetchMode.SELECT)
+	private List<Materia> materias;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
+	@Fetch(FetchMode.SELECT)	
 	private List<Aluno> alunos;
 
 	@OneToOne

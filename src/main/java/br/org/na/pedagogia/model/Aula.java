@@ -37,18 +37,18 @@ public class Aula extends BaseModel {
 	@NotNull
 	@ManyToOne
 	private Turma turma;
-
+	
 	@NotNull
 	@ManyToOne
-	private Professor professor;
+	private Materia materia;
+
+//	@NotNull
+//	@ManyToOne
+//	private Professor professor;
 
 	@NotNull
 	@OneToMany(mappedBy = "aula", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
-
-	@NotNull
-	@ManyToOne
-	private Materia materia;
 
 	@NotNull
 	@ManyToOne
@@ -57,12 +57,11 @@ public class Aula extends BaseModel {
 	@Size(max = 300)
 	private String observacao;
 
-	public Aula(long idTurma, long materia, long professor, Date data) {
+	public Aula(long idTurma, long materia, Date data) {
 		assert data != null;
 
 		this.turma = new Turma(idTurma);
 		this.materia = new Materia(materia);
-		this.professor = new Professor(professor);
 		this.data = data;
 	}
 

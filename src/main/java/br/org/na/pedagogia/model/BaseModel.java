@@ -15,7 +15,6 @@ import org.springframework.data.domain.ExampleMatcher;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import br.org.na.pedagogia.dto.BaseDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -48,8 +47,8 @@ public class BaseModel implements Serializable {
 		this.id = id;
 	}
 	
-	public BaseDTO toBaseDTO() {
-		return mapper.map(this, BaseDTO.class);
+	public <T> T toDTO(Class<T> dto) {
+		return (T) mapper.map(this, dto);
 	}
 	
 }
