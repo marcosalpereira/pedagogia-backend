@@ -8,8 +8,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,7 +15,7 @@ import lombok.Setter;
 @Table(name = "capitulo")
 @Getter
 @Setter
-@JsonIgnoreProperties(value = {"tema"}, allowSetters=true)
+//@JsonIgnoreProperties(value = {"tema"}, allowSetters=true)
 public class Capitulo extends BaseModel {
 
 	private static final long serialVersionUID = 1;

@@ -5,3 +5,13 @@ import { throwError } from 'rxjs';
 
 @GetMapping(produces="application/json")
 @GetMapping(path="/", produces="application/json")  ===> cors error
+
+###
+
+@OneToMany(mappedBy = "aula", cascade = CascadeType.ALL)
+private List<Presenca> presencas;
+(...)
+aula.getPresencas().forEach(p -> p.setAula(aula));
+Aula entity = aulaRepository.save(aula);
+
+###

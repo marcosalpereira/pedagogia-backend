@@ -41,7 +41,7 @@ insert into professor ( nome) values
 ('Plicia'),
 ('Aline');
 
-
+alter table aula drop column professor_id cascade;
 
 -- select * from turma
 insert into turma ( nome, dia_semana, sede_id) values
@@ -51,7 +51,7 @@ insert into turma ( nome, dia_semana, sede_id) values
 insert into turma_alunos (turma_id, alunos_id) values
 (1,1),(1,2),(1,3),(1,4),(1,5);
 
-insert into turma_professores (turma_id, professores_id) values
-(1,1),(1,2),(1,3);
+insert into turma_materias (turma_id, materias_id) values
+(1,1),(1,2);
 
 commit transaction;

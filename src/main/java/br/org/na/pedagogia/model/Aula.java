@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -25,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = { "professor", "materia", "turma", "capitulo" }, allowSetters = true)
+@JsonIgnoreProperties(value = { "professor", "materia", "turma" }, allowSetters = true)
 public class Aula extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
@@ -47,7 +48,7 @@ public class Aula extends BaseModel {
 //	private Professor professor;
 
 	@NotNull
-	@OneToMany(mappedBy = "aula", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
 
 	@NotNull
