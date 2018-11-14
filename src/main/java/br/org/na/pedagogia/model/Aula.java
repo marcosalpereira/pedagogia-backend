@@ -26,7 +26,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = { "professor", "materia", "turma" }, allowSetters = true)
+@JsonIgnoreProperties(value = { "materia", "turma" }, allowSetters = true)
 public class Aula extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
@@ -43,9 +43,9 @@ public class Aula extends BaseModel {
 	@ManyToOne
 	private Materia materia;
 
-//	@NotNull
-//	@ManyToOne
-//	private Professor professor;
+	@NotNull
+	@ManyToOne
+	private Professor professor;
 
 	@NotNull
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL)

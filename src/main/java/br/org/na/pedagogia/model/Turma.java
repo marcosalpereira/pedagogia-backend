@@ -46,6 +46,10 @@ public class Turma extends BaseModel {
 	@ManyToMany
 	@Fetch(FetchMode.SELECT)	
 	private List<Aluno> alunos;
+	
+	@ManyToMany
+	@Fetch(FetchMode.SELECT)	
+	private List<Professor> professores;
 
 	@OneToOne
 	private Aluno representante;

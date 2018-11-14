@@ -1,6 +1,8 @@
 package br.org.na.pedagogia.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -18,6 +20,9 @@ public class Professor extends BaseModel {
 
 	@Size(max = 100)
 	private String nome;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	private Sede sede;	
 
 	public Professor(long id) {
 		super(id);
