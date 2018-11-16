@@ -8,6 +8,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,6 +23,7 @@ public class Capitulo extends BaseModel {
 	private static final long serialVersionUID = 1;
 	
 	@ManyToOne
+	@JsonBackReference
 	private Tema tema;
 	
 	@NotNull

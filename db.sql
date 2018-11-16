@@ -31,17 +31,17 @@ insert into tema ( nome, numero, materia_id) values
 
 
 insert into capitulo ( nome, numero, tema_id) values
-('Introdu??o', 1,1),
+('Introducão', 1,1),
 ('O Enigma de Deus', 2,1),
 ('Sistema Solar', 1,2),
 ('Triplo Logos Solar', 2,2);
 
-insert into professor ( nome) values
-('Levi'),
-('Plicia'),
-('Aline');
+insert into professor (nome, sede_id) values
+('Levi', 1),
+('Plicia', 1),
+('Aline', 1);
 
-alter table aula drop column professor_id cascade;
+--alter table aula drop column professor_id cascade;
 
 -- select * from turma
 insert into turma ( nome, dia_semana, sede_id) values
@@ -51,7 +51,12 @@ insert into turma ( nome, dia_semana, sede_id) values
 insert into turma_alunos (turma_id, alunos_id) values
 (1,1),(1,2),(1,3),(1,4),(1,5);
 
+insert into turma_professores (turma_id, professores_id) values
+(1,1),(1,2),(1,3);
+
 insert into turma_materias (turma_id, materias_id) values
 (1,1),(1,2);
+
+
 
 commit transaction;

@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,7 @@ public class Tema extends BaseModel {
 	private String nome;
 
 	@OneToMany(mappedBy = "tema", fetch = FetchType.EAGER)
+	@JsonManagedReference
 	private List<Capitulo> capitulos;
 
 	public Tema(long id) {

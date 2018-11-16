@@ -13,6 +13,7 @@ public class TurmaDTO extends BaseDTO {
 	
 	private String nome;
 	private List<AlunoDTO> alunos;
+	private List<ProfessorDTO> professores;
 	private AlunoDTO representante;
 	private DayOfWeek diaSemana;
 }

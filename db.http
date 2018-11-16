@@ -42,6 +42,10 @@ Content-Type: application/json
 
 ###
 
+http://localhost:8080/pedagogia/api/aulas?idTurma=1&idMateria=1&data=2018-11-07T03:00:00.000Z
+
+###
+
 GET http://localhost:8080/pedagogia/api/aulas?idTurma=1&idMateria=1&idProfessor=9&data=
 
 ###
