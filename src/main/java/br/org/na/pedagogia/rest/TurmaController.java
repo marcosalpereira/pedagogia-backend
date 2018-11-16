@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.business.TurmaBC;
-import br.org.na.pedagogia.dto.MateriaDTO;
-import br.org.na.pedagogia.dto.MateriasDaTurmaDTO;
-import br.org.na.pedagogia.dto.TurmaDTO;
-import br.org.na.pedagogia.exception.NotFoundException;
+import br.org.na.pedagogia.model.Aluno;
+import br.org.na.pedagogia.model.Professor;
 import br.org.na.pedagogia.model.Turma;
 import br.org.na.pedagogia.repository.TurmaRepository;
 
@@ -35,20 +33,21 @@ public class TurmaController {
 	private TurmaBC turmaBC;
 	
 	@GetMapping
-	public List<TurmaDTO> findAll(
+	public List<Turma> findAll(
 			@RequestParam("idSede") long idSede,
 			@RequestParam("diaSemana") DayOfWeek diaSemana) {
 		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana));
-		return turmaBC.findAll(ex, TurmaDTO.class);
+		return repository.findAll(ex);
 	}
 	
-	@GetMapping("{id}/materias")
-	public List<MateriaDTO> findMaterias(
-			@PathVariable("id") long idTurma) {
-		Example<Turma> ex = Example.of(new Turma(idTurma));
-		return turmaBC.findOne(ex, MateriasDaTurmaDTO.class)
-				.map(dto -> dto.getMaterias())
-				.orElseThrow(() -> new NotFoundException());
+	@GetMapping("{id}/professores")
+	public List<Professor> findProfessores(@PathVariable("id") long idTurma) {
+		return turmaBC.findById(idTurma, turma -> turma.getProfessores());
+	}
+	
+	@GetMapping("{id}/alunos")
+	public List<Aluno> findAlunos(@PathVariable("id") long idTurma) {
+		return turmaBC.findById(idTurma, t -> t.getAlunos());
 	}
 	
 	@PostMapping

@@ -10,13 +10,13 @@ import br.org.na.pedagogia.exception.NotFoundException;
 
 @ControllerAdvice
 class GlobalControllerExceptionHandler {
-    @ResponseStatus(HttpStatus.CONFLICT)  // 409
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
     public void handleConflict() {
         // Nothing to do
     }
     
-    @ResponseStatus(HttpStatus.NOT_FOUND)  // 409
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     public void notFound() {
     	// Nothing to do

@@ -1,3 +1,6 @@
+GET http://localhost:8080/pedagogia/api/niveis/1
+
+###
 
 POST http://localhost:8080/pedagogia/api/alunos
 Content-Type: application/json

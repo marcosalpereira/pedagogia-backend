@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -14,8 +13,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,13 +24,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-// @JsonIgnoreProperties(value = {"sede", "professores"}, allowSetters=true)
+@JsonIgnoreProperties(value = {"nivel", "alunos", "professores"}, allowSetters=true)
 public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
-	@Fetch(FetchMode.SELECT)
-	@ManyToOne(fetch=FetchType.LAZY, optional = false)
+	@ManyToOne(optional = false)
 	private Sede sede;
 	
 	@NotNull
@@ -40,15 +37,9 @@ public class Turma extends BaseModel {
 	private String nome;
 
 	@ManyToMany
-	@Fetch(FetchMode.SELECT)
-	private List<Materia> materias;
-
-	@ManyToMany
-	@Fetch(FetchMode.SELECT)	
 	private List<Aluno> alunos;
 	
 	@ManyToMany
-	@Fetch(FetchMode.SELECT)	
 	private List<Professor> professores;
 
 	@OneToOne
@@ -57,7 +48,10 @@ public class Turma extends BaseModel {
 	@NotNull
 	@Enumerated(EnumType.ORDINAL)
 	private DayOfWeek diaSemana;
-
+	
+	@ManyToOne(optional = false)
+	private Nivel nivel;
+	
 	public Turma(long id) {
 		super(id);
 	}

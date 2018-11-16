@@ -17,7 +17,6 @@ import lombok.Setter;
 @Table(name = "capitulo")
 @Getter
 @Setter
-//@JsonIgnoreProperties(value = {"tema"}, allowSetters=true)
 public class Capitulo extends BaseModel {
 
 	private static final long serialVersionUID = 1;

@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
@@ -22,11 +22,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"materia"}, allowSetters=true)
 public class Tema extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 
+	@JsonBackReference
 	@ManyToOne
 	private Materia materia;
 
