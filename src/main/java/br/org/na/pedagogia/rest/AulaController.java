@@ -37,10 +37,10 @@ public class AulaController {
 	}
 
 	@PostMapping
-	public Long registrarAula(@RequestBody @Valid Aula aula) {
+	public Aula registrarAula(@RequestBody @Valid Aula aula) {
 		aula.getPresencas().forEach(p -> p.setAula(aula));
 		Aula entity = aulaRepository.save(aula);
-		return entity.getId();
+		return entity;
 	}
 
 }
