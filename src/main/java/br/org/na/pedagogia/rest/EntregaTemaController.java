@@ -34,14 +34,12 @@ public class EntregaTemaController {
 			) {
 		Example<EntregaTema> ex = Example.of(new EntregaTema(idTurma, idTema), BaseModel.MATCHER);
 		List<EntregaTema> entregasBD = repository.findAll(ex, Sort.by(Order.asc("aluno.nome")));
-		EntregaTema.prepararDeserializacao(ex.getProbe(), entregasBD);
 		return entregasBD;
 	}
 	
 	@PostMapping
 	public List<EntregaTema> registrarEntrega(@RequestBody @Valid List<EntregaTema> entregas) {
 		List<EntregaTema> entregasBD = repository.saveAll(entregas);
-		EntregaTema.prepararDeserializacao(entregas.get(0), entregasBD);
 		return entregasBD;
 	}
 	

@@ -23,7 +23,7 @@ import lombok.Setter;
 public class Materia extends BaseModel {
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonBackReference
 	private Nivel nivel;	
 	

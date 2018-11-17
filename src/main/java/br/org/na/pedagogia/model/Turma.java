@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -24,12 +25,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"nivel", "alunos", "professores"}, allowSetters=true)
+@JsonIgnoreProperties(value = {"alunos", "professores"}, allowSetters=true)
 public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	private Sede sede;
 	
 	@NotNull
@@ -49,7 +50,7 @@ public class Turma extends BaseModel {
 	@Enumerated(EnumType.ORDINAL)
 	private DayOfWeek diaSemana;
 	
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, fetch=FetchType.LAZY)
 	private Nivel nivel;
 	
 	public Turma(long id) {

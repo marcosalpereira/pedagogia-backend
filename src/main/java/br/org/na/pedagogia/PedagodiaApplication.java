@@ -3,8 +3,13 @@ package br.org.na.pedagogia;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module.Feature;
 
 @SpringBootApplication
 public class PedagodiaApplication {
@@ -26,6 +31,18 @@ public class PedagodiaApplication {
                 .maxAge(3600);
             }
         };
+    }
+    
+    @Bean 
+    public MappingJackson2HttpMessageConverter jacksonMessageConverter() {
+        MappingJackson2HttpMessageConverter messageConverter = new MappingJackson2HttpMessageConverter();
+        ObjectMapper mapper = new ObjectMapper();
+        Hibernate5Module hibernateModule = new Hibernate5Module();
+        hibernateModule.configure(Feature.FORCE_LAZY_LOADING, false); 
+        hibernateModule.configure(Feature.SERIALIZE_IDENTIFIER_FOR_LAZY_NOT_LOADED_OBJECTS, true);
+        mapper.registerModule(hibernateModule);
+        messageConverter.setObjectMapper(mapper);
+        return messageConverter;
     }
     
 }

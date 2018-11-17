@@ -6,8 +6,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = { "sede" }, allowSetters = true)
+//@JsonIgnoreProperties(value = { "sede" }, allowSetters = true)
 public class Professor extends BaseModel {
 	private static final long serialVersionUID = 1L;
 

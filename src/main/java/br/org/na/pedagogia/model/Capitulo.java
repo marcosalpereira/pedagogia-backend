@@ -2,6 +2,7 @@ package br.org.na.pedagogia.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -21,7 +22,7 @@ public class Capitulo extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonBackReference
 	private Tema tema;
 	

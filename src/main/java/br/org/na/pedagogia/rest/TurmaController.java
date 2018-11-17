@@ -37,7 +37,8 @@ public class TurmaController {
 			@RequestParam("idSede") long idSede,
 			@RequestParam("diaSemana") DayOfWeek diaSemana) {
 		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana));
-		return repository.findAll(ex);
+		List<Turma> findAll = repository.findAll(ex);
+		return findAll;
 	}
 	
 	@GetMapping("{id}/professores")

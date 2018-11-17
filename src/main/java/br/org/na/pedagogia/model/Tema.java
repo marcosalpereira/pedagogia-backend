@@ -27,7 +27,7 @@ public class Tema extends BaseModel {
 	private static final long serialVersionUID = 1;
 
 	@JsonBackReference
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
 	@Column

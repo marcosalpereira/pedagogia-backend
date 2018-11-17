@@ -1,7 +1,6 @@
 package br.org.na.pedagogia.rest;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -24,22 +23,21 @@ public class AlunoController {
 
 	@Autowired
 	private AlunoRepository repository;
-	
+
 	@PostMapping
 	public Long save(@RequestBody @Valid Aluno aluno) {
 		Aluno entity = repository.save(aluno);
 		return entity.getId();
 	}
-	
+
 	@GetMapping
 	public List<Aluno> findAll() {
 		return repository.findAll();
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Aluno> findById(@PathVariable("id") Long id) {
-		Optional<Aluno> aluno = repository.findById(id);
-		return ResponseEntity.of(aluno);
+		return ResponseEntity.of(repository.findById(id));
 	}
-	
+
 }

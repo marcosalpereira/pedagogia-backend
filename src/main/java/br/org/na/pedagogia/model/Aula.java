@@ -15,8 +15,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = { "materia", "turma" }, allowSetters = true)
+//@JsonIgnoreProperties(value = { "materia", "turma" }, allowSetters = true)
 public class Aula extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
@@ -40,11 +38,11 @@ public class Aula extends BaseModel {
 	private Turma turma;
 	
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Professor professor;
 
 	@NotNull
@@ -52,7 +50,7 @@ public class Aula extends BaseModel {
 	private List<Presenca> presencas;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Capitulo capitulo;
 
 	@Size(max = 300)
