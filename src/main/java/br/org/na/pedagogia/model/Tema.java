@@ -1,12 +1,13 @@
 package br.org.na.pedagogia.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -38,11 +39,12 @@ public class Tema extends BaseModel {
 
 	@OneToMany(mappedBy = "tema", fetch = FetchType.EAGER)
 	@JsonManagedReference
-	private List<Capitulo> capitulos;
+	@OrderBy("numero")
+	private Set<Capitulo> capitulos;
 
 	public Tema(long id) {
 		super(id);
 	}
 
-	
+
 }

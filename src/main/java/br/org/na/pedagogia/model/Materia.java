@@ -1,11 +1,12 @@
 package br.org.na.pedagogia.model;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -22,21 +23,22 @@ import lombok.Setter;
 @Getter @Setter @NoArgsConstructor
 public class Materia extends BaseModel {
 	private static final long serialVersionUID = 1L;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonBackReference
-	private Nivel nivel;	
-	
+	private Nivel nivel;
+
 	@NotBlank
 	@Size(max = 100)
-	private String nome;	
+	private String nome;
 
 	@JsonManagedReference
 	@OneToMany(mappedBy = "materia", fetch = FetchType.EAGER)
-	private List<Tema> temas;
+	@OrderBy("numero")
+	private Set<Tema> temas;
 
 	public Materia(long id) {
 		super(id);
 	}
-	
+
 }

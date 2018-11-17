@@ -1,4 +1,4 @@
-GET http://localhost:8080/pedagogia/api/niveis/1
+GET http://localhost:8080/pedagogia/api/niveis/2
 
 ###
 

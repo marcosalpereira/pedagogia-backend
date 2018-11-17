@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -30,7 +29,6 @@ public class EntregaTema extends BaseModel {
 	private Tema tema;
 
 	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	@OrderBy("nome")
 	private Aluno aluno;
 
 	@Column
@@ -44,11 +42,11 @@ public class EntregaTema extends BaseModel {
 		tema = new Tema(idTema);
 	}
 
-//	public static void prepararDeserializacao(EntregaTema src, List<EntregaTema> entregas) {
-//		entregas.forEach(entrega -> {
-//	        entrega.setTema(src.getTema());
-//	        entrega.setTurma(src.getTurma());
-//		});
-//	}
+	//	public static void prepararDeserializacao(EntregaTema src, List<EntregaTema> entregas) {
+	//		entregas.forEach(entrega -> {
+	//	        entrega.setTema(src.getTema());
+	//	        entrega.setTurma(src.getTurma());
+	//		});
+	//	}
 
 }
