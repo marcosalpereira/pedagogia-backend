@@ -1,4 +1,13 @@
-GET http://localhost:8080/pedagogia/api/niveis/2
+POST  http://localhost:8080/pedagogia/api/login
+Content-Type: application/json
+
+{ "nome": "na@na.com.br", "senha": "123"}
+
+###
+
+
+GET http://localhost:8080/pedagogia/api/usuarios/na@na.com.br
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NDMzMzc4MTN9.UrEbsjLdjHC9IygwmfwimB7YU2bTfMJXqtlw5uQlxnKrAL8UsoQat_41WLWA2MDYqxDzQ62kmDvdQoV8zo-1ZQ
 
 ###
 

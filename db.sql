@@ -4,6 +4,15 @@
 
 begin transaction;
 
+insert into usuario(nome,senha) values
+('na@na.com.br', '$2a$10$vssQKkloi0UM1jDr3HIll.cCTtKzGLhXQbfcMHE5tq84Fc/kSNfB.');
+
+insert into perfil (nome) values 
+('ROLE_ADMIN');
+
+insert into usuario_perfils (usuario_id, perfils_id) values
+(1,1);
+
 insert into nivel (numero)
 values (1),(2),(3);
 
