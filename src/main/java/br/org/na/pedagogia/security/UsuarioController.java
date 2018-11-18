@@ -16,9 +16,9 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioRepository repository;
 
-	@GetMapping("/{nome}")
-	public Usuario findById(@PathVariable("nome") String nome) {
-		Usuario usuario = repository.findByNome(nome);
+	@GetMapping("/{email}")
+	public Usuario findById(@PathVariable("email") String email) {
+		Usuario usuario = repository.findByEmail(email);
 		if (usuario == null) {
 			throw new NotFoundException();
 		}

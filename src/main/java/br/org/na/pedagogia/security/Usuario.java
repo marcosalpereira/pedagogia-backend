@@ -8,12 +8,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import br.org.na.pedagogia.model.BaseModel;
+import br.org.na.pedagogia.model.Sede;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,10 +26,16 @@ public class Usuario extends BaseModel implements UserDetails{
 	private static final long serialVersionUID = 1L;
 
 	@Column
+	private String email;
+
+	@Column
 	private String nome;
 
 	@Column
 	private String senha;
+
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	private Sede sede;
 
 	@ManyToMany(fetch=FetchType.EAGER)
 	private Set<Perfil> perfils;
@@ -44,7 +52,7 @@ public class Usuario extends BaseModel implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		return nome;
+		return email;
 	}
 
 	@Override

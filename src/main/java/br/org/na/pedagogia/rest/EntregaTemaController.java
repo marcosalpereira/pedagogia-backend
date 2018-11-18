@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,7 @@ public class EntregaTemaController {
 	private EntregaTemaRepository repository;
 
 	@GetMapping
+	@Secured("ADMIN")
 	public List<EntregaTema> findAll(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idTema") long idTema
@@ -36,11 +38,12 @@ public class EntregaTemaController {
 		List<EntregaTema> entregasBD = repository.findAll(ex, Sort.by(Order.asc("aluno.nome")));
 		return entregasBD;
 	}
-	
+
 	@PostMapping
+	@Secured("ADMIN")
 	public List<EntregaTema> registrarEntrega(@RequestBody @Valid List<EntregaTema> entregas) {
 		List<EntregaTema> entregasBD = repository.saveAll(entregas);
 		return entregasBD;
 	}
-	
+
 }

@@ -3,5 +3,5 @@ package br.org.na.pedagogia.security;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, String>{
-	Usuario findByNome(String nome);
+	Usuario findByEmail(String nome);
 }
