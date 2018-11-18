@@ -2,6 +2,7 @@ package br.org.na.pedagogia.security;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class TokenAuthenticationService {
 
-	private static final long EXPIRATIONTIME = 864000000;
 	private static final String SECRET = "plataoJal";
 	private static final String TOKEN_PREFIX = "Bearer";
 	private static final String HEADER_STRING = "Authorization";
@@ -22,12 +22,20 @@ public class TokenAuthenticationService {
 	public static void addAuthentication(HttpServletResponse res, String username) {
 		String JWT = Jwts.builder()
 				.setSubject(username)
-				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+				.setExpiration(new Date(System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1)))
 				.signWith(SignatureAlgorithm.HS512, SECRET)
 				.compact();
 
 		String token = TOKEN_PREFIX + " " + JWT;
 		res.addHeader(HEADER_STRING, token);
+
+
+		res.addHeader("Vary", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers");
+		res.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		res.addHeader("Access-Control-Allow-Methods", "POST");
+		res.addHeader("Access-Control-Allow-Headers", "content-type");
+		res.addHeader("Access-Control-Max-Age", "3600");
+		res.addHeader("Allow", "GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH");
 
 		try {
 			res.getOutputStream().print(token);
