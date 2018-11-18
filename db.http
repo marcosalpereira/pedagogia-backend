@@ -1,13 +1,19 @@
 POST  http://localhost:8080/pedagogia/api/login
 Content-Type: application/json
 
-{ "email": "na@na.com.br", "senha": "123"}
+{ "email": "user@na.com.br", "senha": "123"}
+
+###
+
+GET http://localhost:8080/pedagogia/api/usuarios/na@na.com.br
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0MjU3ODE2NywiUk9MRVMiOiJST0xFX1VTRVIifQ.LsI_Q1suKeVARlC48XJWynRYr3o0BiqAIdIF6keIlQwgqySMXTFfisF1USNBiKL7-chYBpzeFY_YmLFL1OzIQA
 
 ###
 
 
+
 GET http://localhost:8080/pedagogia/api/usuarios/na@na.com.br
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NDMzMzc4MTN9.UrEbsjLdjHC9IygwmfwimB7YU2bTfMJXqtlw5uQlxnKrAL8UsoQat_41WLWA2MDYqxDzQ62kmDvdQoV8zo-1ZQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NDI1NzY2MjgsIlJPTEVTIjoiUk9MRV9BRE1JTiJ9.bpeKIBiN9uSbmIJsY4-f5_klVlJ0bVssv5buaQFh9DCjE8lw5Tyqiwb7gOZ6EQs6XPu4qDdFGjlnCGTTJexh2Q
 
 ###
 

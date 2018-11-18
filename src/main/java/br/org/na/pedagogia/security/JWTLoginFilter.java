@@ -1,7 +1,6 @@
 package br.org.na.pedagogia.security;
 
 import java.io.IOException;
-import java.util.Collections;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -12,7 +11,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -35,7 +33,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 				new UsernamePasswordAuthenticationToken(
 						usuario.getUsername(),
 						usuario.getSenha(),
-						Collections.<GrantedAuthority>emptyList()
+						usuario.getAuthorities()
 						)
 				);
 	}
@@ -46,7 +44,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 			HttpServletResponse res, FilterChain chain,
 			Authentication auth
 			) throws IOException, ServletException {
-		TokenAuthenticationService.addAuthentication(res, auth.getName());//criar classe
+		TokenAuthenticationService.addAuthentication(res, auth);
 	}
 
 }

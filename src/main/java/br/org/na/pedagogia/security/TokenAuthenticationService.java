@@ -1,15 +1,21 @@
 package br.org.na.pedagogia.security;
 
-import java.io.IOException;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -19,16 +25,19 @@ public class TokenAuthenticationService {
 	private static final String TOKEN_PREFIX = "Bearer";
 	private static final String HEADER_STRING = "Authorization";
 
-	public static void addAuthentication(HttpServletResponse res, String username) {
+	public static void addAuthentication(HttpServletResponse res, Authentication auth) {
+		Set<String> roles = auth.getAuthorities().stream()
+				.map(r -> r.getAuthority()).collect(Collectors.toSet());
+
 		String JWT = Jwts.builder()
-				.setSubject(username)
+				.setSubject(auth.getName())
 				.setExpiration(new Date(System.currentTimeMillis() + TimeUnit.HOURS.toMillis(1)))
+				.claim("ROLES", String.join(",", roles))
 				.signWith(SignatureAlgorithm.HS512, SECRET)
 				.compact();
 
 		String token = TOKEN_PREFIX + " " + JWT;
 		res.addHeader(HEADER_STRING, token);
-
 
 		res.addHeader("Vary", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers");
 		res.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
@@ -37,21 +46,36 @@ public class TokenAuthenticationService {
 		res.addHeader("Access-Control-Max-Age", "3600");
 		res.addHeader("Allow", "GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH");
 
-		try {
-			res.getOutputStream().print(token);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		//		try {
+		//			res.getOutputStream().print(token);
+		//		} catch (IOException e) {
+		//			e.printStackTrace();
+		//		}
 	}
 
 	public static Authentication getByToken(String token) {
-		String user = Jwts.parser()
-				.setSigningKey(SECRET)
-				.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-				.getBody()
-				.getSubject();
+		Claims body;
+		try {
+			body = Jwts.parser()
+					.setSigningKey(SECRET)
+					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
+					.getBody();
+		} catch (ExpiredJwtException e) {
+			return null;
+		}
 
-		return user != null ? new UsernamePasswordAuthenticationToken(user, null, null) : null;
+		String user = body.getSubject();
+		if (user == null) {
+			return null;
+		}
+
+		String roles = (String) body.get("ROLES");
+
+		List<SimpleGrantedAuthority> authorities = Stream.of(roles.split(","))
+				.map (role -> new SimpleGrantedAuthority(role))
+				.collect(Collectors.toList());
+
+		return new UsernamePasswordAuthenticationToken(user, null, authorities);
 	}
 
 	public static Authentication getAuthentication(HttpServletRequest request) {
