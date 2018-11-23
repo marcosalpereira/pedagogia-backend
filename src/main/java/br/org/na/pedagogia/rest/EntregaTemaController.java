@@ -22,7 +22,7 @@ import br.org.na.pedagogia.repository.EntregaTemaRepository;
 
 
 @RestController
-@RequestMapping("/entregas-tema")
+@RequestMapping("/api/entregas-tema")
 public class EntregaTemaController {
 
 	@Autowired

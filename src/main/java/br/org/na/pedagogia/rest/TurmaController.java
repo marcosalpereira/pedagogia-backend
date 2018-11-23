@@ -23,7 +23,7 @@ import br.org.na.pedagogia.repository.TurmaRepository;
 
 
 @RestController
-@RequestMapping("/turmas")
+@RequestMapping("/api/turmas")
 public class TurmaController {
 
 	@Autowired

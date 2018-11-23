@@ -14,7 +14,7 @@ import br.org.na.pedagogia.repository.NivelRepository;
 
 
 @RestController
-@RequestMapping("/niveis")
+@RequestMapping("/api/niveis")
 public class NivelController {
 
 	@Autowired

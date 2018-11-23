@@ -12,7 +12,7 @@ import br.org.na.pedagogia.repository.MateriaRepository;
 
 
 @RestController
-@RequestMapping("/materias")
+@RequestMapping("/api/materias")
 public class MateriaController {
 
 	@Autowired

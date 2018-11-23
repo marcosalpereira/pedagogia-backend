@@ -21,7 +21,7 @@ import br.org.na.pedagogia.repository.AulaRepository;
 
 
 @RestController
-@RequestMapping("/aulas")
+@RequestMapping("/api/aulas")
 public class AulaController {
 
 	@Autowired
