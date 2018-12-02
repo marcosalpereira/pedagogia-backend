@@ -26,6 +26,7 @@ class GlobalControllerExceptionHandler {
 	@ExceptionHandler(ResourceNotFoundException.class)
 	@ResponseStatus(HttpStatus.OK)
 	public String handleResourceNotFoundException() {
+		System.out.println("redirect to index");
 		return "/index.html";
 	}
 }

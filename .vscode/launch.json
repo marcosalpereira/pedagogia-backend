@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+   
+   
+   
+            "name": "Spring Boot-PedagodiaApplication<pedagogia-rest>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "br.org.na.pedagogia.PedagodiaApplication",
+            "projectName": "pedagogia-rest",
+            "args": ""
+        }
+    ]
+}
