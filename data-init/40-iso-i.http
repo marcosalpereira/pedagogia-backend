@@ -1,0 +1,179 @@
+POST  https://72.14.188.252:8443/pedagogia/api/login
+Content-Type: application/json
+
+{ "email": "user@na.com.br", "senha": "123"}
+
+###
+
+POST  https://72.14.188.252:8443/pedagogia/api/materias
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTI0MDM1MSwiUk9MRVMiOiJST0xFX1VTRVIifQ.YGGss5I8iwZ2xmIAj8cQvOyNsYUJU-I7e8NyU86BXZHoWj9P-NMUC2SfCSiP03DoGoZmsmurBNLmGWqLwVmgxw
+
+{
+  "nome": "ISO I",
+  "nivel": { "id": 2 },
+  "temas": [
+    {
+      "nome": "Tema I",
+      "capitulos": [
+        { "nome": "Introdução" },
+        { "nome": "O Enigma de Deus" },
+        { "nome": "A Filosofia Natural ou Esotérica" },
+        { "nome": "Os Três Princípios de uma Escola Esotérica" },
+        { "nome": "Constituição Septenária do Homem" },
+        { "nome": "Corpos e Subcorpos" }
+      ]
+    },
+    {
+      "nome": "Tema II",
+      "capitulos": [
+        { "nome": "Sistema Solar" },
+        { "nome": "O triplo Logos solar" },
+        {
+          "nome": "Como estão integrados Terra, Sistema, Cadeia, Ronda, Globo e Raça"
+        }
+      ]
+    },
+    {
+      "nome": "Tema III",
+      "capitulos": [
+        { "nome": "Antropogênese Oculta" },
+        { "nome": "Primeira Raça" },
+        { "nome": "Seguna Raça" },
+        { "nome": "Terceira Raça" },
+        { "nome": "Quarta Raça" },
+        { "nome": "Quinta Raça" },
+        { "nome": "Sexta Raça" },
+        { "nome": "Sétima Raça" },
+        { "nome": "Adendo" },
+        { "nome": "Notas" }
+      ]
+    },
+    {
+      "nome": "Tema IV",
+      "capitulos": [
+        { "nome": "Dharman - Dharma" },
+        { "nome": "Kharman - Kharma" },
+        { "nome": "Categoria de Kharma para os Homens" },
+        { "nome": "Modalidades Kármicas" },
+        { "nome": "Livre Arbítrio" },
+        { "nome": "Reencarnação" },
+        { "nome": "Nascimento" },
+        { "nome": "Maturidade" },
+        { "nome": "Velhice" },
+        { "nome": "Morte" }
+      ]
+    },
+    {
+      "nome": "Tema V",
+      "capitulos": [
+        { "nome": "Conceito Geral de Religião e Religiões" },
+        { "nome": "Reuniões Naturais e Reveladas" },
+        { "nome": "Alcance do Segundo Princípio da Fil. Esotérica" }
+      ]
+    },
+    {
+      "nome": "Tema VI",
+      "capitulos": [
+        { "nome": "Conceito Esotérico de Religião" },
+        { "nome": "Manifestação Sétupla do Triplo Logos" },
+        { "nome": "Características dos Três tipos de Avatares" },
+        { "nome": "Métodos e Advertências" },
+        { "nome": "Rondas de Avatares" },
+        { "nome": "Última Ronda de Avatares Budhisátwicos" }
+      ]
+    },
+    {
+      "nome": "Tema VII",
+      "capitulos": [
+        { "nome": "Particularidades de cada Mestre" },
+        { "nome": "Vyasa (III)" },
+        { "nome": "Hermes Trimegisto (IV)" },
+        { "nome": "Zoroastro (V)" },
+        { "nome": "Orfeu (VI)" },
+        { "nome": "Sidharta Gautama Budha (VII)" },
+        { "nome": "Adendo" },
+        { "nome": "Jesus Cristo" },
+        { "nome": "Maomé" }
+      ]
+    },
+    {
+      "nome": "Tema VIII",
+      "capitulos": [
+        { "nome": "A Filosofia Atemporal e as suas Expressões Limitadas" },
+        { "nome": "Sociedades de Estudos Esotéricos" },
+        { "nome": "A Grande Fraternidade Branca" },
+        { "nome": "Reflexos da Grande Fraternidade Branca sobre a Humanidade" }
+      ]
+    },
+    {
+      "nome": "Tema IX",
+      "capitulos": [
+        { "nome": "O Neoplatonismo - A sociedade Eclética de Alexandria" },
+        { "nome": "Giordano Bruno" },
+        { "nome": "Rosacrucismo" },
+        { "nome": "Maçonaria" },
+        { "nome": "Espiritismo" },
+        { "nome": "Sociedade Teosófica Mundial: Fund. e Desenv." }
+      ]
+    },
+    {
+      "nome": "Tema X",
+      "capitulos": [
+        { "nome": "O Uno sem Segundo, o Uno Ilusório" },
+        { "nome": "Aritmética e Geometria" },
+        { "nome": "Gênese das Formas" }
+      ]
+    },
+    {
+      "nome": "Tema XI",
+      "capitulos": [
+        { "nome": "Fenômenos Físicos, Químicos e Alquímicos" },
+        { "nome": "O que é Alquimia?" },
+        { "nome": "Constituição do Átomo" },
+        { "nome": "Constituição da Molécula" },
+        { "nome": "O que é Valência?" },
+        { "nome": "Elementos químicos e alquímicos" },
+        { "nome": "O que é Astrologia?" },
+        { "nome": "O que é Yoga?" },
+        { "nome": "Karma-Yoga" },
+        { "nome": "Bakti-Yoga" },
+        { "nome": "Gnani-Yoga" },
+        { "nome": "Rja-Yoga" }
+      ]
+    },
+    {
+      "nome": "Tema XII",
+      "capitulos": [
+        { "nome": "Biologia" },
+        { "nome": "Histologia" },
+        { "nome": "Os elétrons na sua função biológica" },
+        { "nome": "Introdução à Anatomia Esotérica" },
+        { "nome": "Sistema ósseo" },
+        { "nome": "Classificação Esotérica do esqueleto" },
+        { "nome": "Classificação Esotérica dos Sistemas Orgânicos" },
+        { "nome": "Neuronal" },
+        { "nome": "Respiratório" },
+        { "nome": "Digestório" },
+        { "nome": "Circulatório" },
+        { "nome": "Glandular" },
+        { "nome": "Renal" },
+        { "nome": "Reprodutor" },
+        { "nome": "Éter 1" },
+        { "nome": "Éter 2" },
+        { "nome": "Éter 3" },
+        { "nome": "Éter 4" }
+      ]
+    },
+    {
+      "nome": "Tema XIII",
+      "capitulos": [
+        { "nome": "Zoologia" },
+        { "nome": "Linha Dévia" },
+        { "nome": "Linha Humana" }
+      ]
+    },
+    { "nome": "Tema XIV", "capitulos": [{ "nome": "Botânica" }] },
+    { "nome": "Tema XV", "capitulos": [{ "nome": "O Futuro" }] }
+  ]
+}

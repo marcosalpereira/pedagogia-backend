@@ -29,7 +29,7 @@ public class EntregaTemaController {
 	private EntregaTemaRepository repository;
 
 	@GetMapping
-	@Secured("ADMIN")
+	//TODO definir perfis @Secured("ADMIN")
 	public List<EntregaTema> findAll(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idTema") long idTema
@@ -40,7 +40,7 @@ public class EntregaTemaController {
 	}
 
 	@PostMapping
-	@Secured("ADMIN")
+	//TODO definir perfis @Secured("ADMIN")
 	public List<EntregaTema> registrarEntrega(@RequestBody @Valid List<EntregaTema> entregas) {
 		List<EntregaTema> entregasBD = repository.saveAll(entregas);
 		return entregasBD;

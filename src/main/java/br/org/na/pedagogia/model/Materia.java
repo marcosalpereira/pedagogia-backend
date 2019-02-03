@@ -1,7 +1,9 @@
 package br.org.na.pedagogia.model;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -13,6 +15,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +35,9 @@ public class Materia extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 
+	@JsonDeserialize(as = LinkedHashSet.class)
 	@JsonManagedReference
-	@OneToMany(mappedBy = "materia", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "materia", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@OrderBy("numero")
 	private Set<Tema> temas;
 

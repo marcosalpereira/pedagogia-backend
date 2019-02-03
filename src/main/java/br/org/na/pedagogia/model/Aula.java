@@ -42,10 +42,6 @@ public class Aula extends BaseModel {
 	private Materia materia;
 
 	@NotNull
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Professor professor;
-
-	@NotNull
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
 

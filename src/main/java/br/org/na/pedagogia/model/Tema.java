@@ -1,7 +1,9 @@
 package br.org.na.pedagogia.model;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,10 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,13 +35,15 @@ public class Tema extends BaseModel {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
+	@NotNull
 	@Column
 	private Integer numero;
 
 	@Size(max = 100)
 	private String nome;
 
-	@OneToMany(mappedBy = "tema", fetch = FetchType.EAGER)
+	@JsonDeserialize(as = LinkedHashSet.class)
+	@OneToMany(mappedBy = "tema", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JsonManagedReference
 	@OrderBy("numero")
 	private Set<Capitulo> capitulos;

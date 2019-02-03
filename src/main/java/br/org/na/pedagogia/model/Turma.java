@@ -36,6 +36,13 @@ public class Turma extends BaseModel {
 	@NotNull
 	@Size(max = 100)
 	private String nome;
+	
+	/**
+	 * Codigo no mercurio
+	 */
+	@NotNull
+	@Size(max = 15)
+	private String codigo;
 
 	@ManyToMany
 	private List<Aluno> alunos;
@@ -47,7 +54,8 @@ public class Turma extends BaseModel {
 	private Aluno representante;
 	
 	@NotNull
-	@Enumerated(EnumType.ORDINAL)
+	@Size(max = 15)
+	@Enumerated(EnumType.STRING)
 	private DayOfWeek diaSemana;
 	
 	@ManyToOne(optional = false, fetch=FetchType.LAZY)

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -20,6 +21,15 @@ public class Aluno extends BaseModel {
 	@NotNull
 	@Size(max = 100)
 	private String nome;
+
+	@Email
+	private String email;
+
+	/**
+	 * Matricula no mercurio.
+	 */
+	@NotNull
+	private Integer matricula;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Sede sede;

@@ -1,10 +1,47 @@
 --
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.6 (Ubuntu 10.6-0ubuntu0.18.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
 -- Name: aluno; Type: TABLE; Schema: public; Owner: na
 --
 
 CREATE TABLE public.aluno (
     id bigint NOT NULL,
     version integer DEFAULT 0,
+    email character varying(255),
+    matricula integer NOT NULL,
     nome character varying(100) NOT NULL,
     sede_id bigint NOT NULL
 );
@@ -44,7 +81,6 @@ CREATE TABLE public.aula (
     observacao character varying(300),
     capitulo_id bigint NOT NULL,
     materia_id bigint NOT NULL,
-    professor_id bigint NOT NULL,
     turma_id bigint NOT NULL
 );
 
@@ -81,8 +117,7 @@ CREATE TABLE public.capitulo (
     version integer DEFAULT 0,
     nome character varying(100) NOT NULL,
     numero integer NOT NULL,
-    tema_id bigint,
-    CONSTRAINT capitulo_numero_check CHECK ((numero >= 1))
+    tema_id bigint
 );
 
 
@@ -189,8 +224,7 @@ ALTER SEQUENCE public.materia_id_seq OWNED BY public.materia.id;
 CREATE TABLE public.nivel (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    numero integer NOT NULL,
-    CONSTRAINT nivel_numero_check CHECK ((numero >= 1))
+    codigo character varying(10) NOT NULL
 );
 
 
@@ -364,7 +398,7 @@ CREATE TABLE public.tema (
     id bigint NOT NULL,
     version integer DEFAULT 0,
     nome character varying(100),
-    numero integer,
+    numero integer NOT NULL,
     materia_id bigint
 );
 
@@ -399,7 +433,8 @@ ALTER SEQUENCE public.tema_id_seq OWNED BY public.tema.id;
 CREATE TABLE public.turma (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    dia_semana integer NOT NULL,
+    codigo character varying(15) NOT NULL,
+    dia_semana character varying(255) NOT NULL,
     nome character varying(100) NOT NULL,
     nivel_id bigint NOT NULL,
     representante_id bigint,
@@ -771,14 +806,6 @@ ALTER TABLE ONLY public.turma_professores
 
 
 --
--- Name: aula fk9dvd4nr6beh0lp2vp3v82xfn4; Type: FK CONSTRAINT; Schema: public; Owner: na
---
-
-ALTER TABLE ONLY public.aula
-    ADD CONSTRAINT fk9dvd4nr6beh0lp2vp3v82xfn4 FOREIGN KEY (professor_id) REFERENCES public.professor(id);
-
-
---
 -- Name: usuario fke9l88h7h03andkii6mjhkedm3; Type: FK CONSTRAINT; Schema: public; Owner: na
 --
 
@@ -896,3 +923,9 @@ ALTER TABLE ONLY public.presenca
 
 ALTER TABLE ONLY public.aula
     ADD CONSTRAINT fks1m7vn7w27pcm7anvperj6bae FOREIGN KEY (capitulo_id) REFERENCES public.capitulo(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
