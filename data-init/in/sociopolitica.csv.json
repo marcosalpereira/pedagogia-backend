@@ -1,0 +1,103 @@
+{
+  "nome": "Sociopolítica",
+  "nivel": { "id": 1 },
+  "temas": [
+    {
+      "nome": "Tema I",
+      "capitulos": [
+        { "nome": "Introdução" },
+        { "nome": "Os problemas do mundo e do homem atual" },
+        { "nome": "O papel da juventude numa grande transformação" }
+      ]
+    },
+    {
+      "nome": "Tema II",
+      "capitulos": [
+        { "nome": "Indivíduo" },
+        { "nome": "Sociedade" },
+        { "nome": "Estado" },
+        { "nome": "Ideal filosófico e Ideal Político" },
+        { "nome": "Mito platônico da caverna" }
+      ]
+    },
+    {
+      "nome": "Tema III",
+      "capitulos": [
+        {
+          "nome": "Características masculinas e femininas nas sociedades primitivas e atuais"
+        },
+        {
+          "nome": "O papel da criança, do adolescente, do jovem, do adulto e do velho"
+        },
+        { "nome": "Como nasce um cidadão" },
+        {
+          "nome": "A moral como fundamento do direito social e do dever político"
+        }
+      ]
+    },
+    {
+      "nome": "Tema III - ANEXO I",
+      "capitulos": [
+        { "nome": "A vida de Platão" },
+        { "nome": "Suas obras" },
+        { "nome": "República de Platão" },
+        { "nome": "Introdução - Significados propostos" },
+        { "nome": "Formação da sociedade" },
+        { "nome": "Educação e modo de viver dos guardiões" },
+        { "nome": "As quatro naturezas de homens" },
+        { "nome": "As virtudes encontradas na sociedade e no indivíduo" },
+        { "nome": "Formas de governo" },
+        { "nome": "Conclusão" }
+      ]
+    },
+    {
+      "nome": "Tema III - ANEXO II - Os Estóicos",
+      "capitulos": [
+        { "nome": "Introdução" },
+        { "nome": "Epíteto" },
+        { "nome": "Sêneca - A Brevidade da Vida" },
+        { "nome": "Marco Aurélio - Meditações" }
+      ]
+    },
+    {
+      "nome": "Tema IV",
+      "capitulos": [
+        {
+          "nome": "Formas sociopolíticas da Antiguidade no Oriente e no Ocidente"
+        }
+      ]
+    },
+    {
+      "nome": "Tema V",
+      "capitulos": [{ "nome": "Roma e os cidadãos do mundo" }]
+    },
+    {
+      "nome": "Tema VI",
+      "capitulos": [
+        {
+          "nome": "A decadência do Ocidente como Unidade Política: Formas medievais"
+        }
+      ]
+    },
+    {
+      "nome": "Tema VII",
+      "capitulos": [
+        { "nome": "Aparecimento da sociedade burguesa e do Estado Liceral" }
+      ]
+    },
+    {
+      "nome": "Temas VIII",
+      "capitulos": [
+        { "nome": "Formas políticas modernas: Estado Liberal e Dirigido" }
+      ]
+    },
+    {
+      "nome": "Tema IX",
+      "capitulos": [
+        {
+          "nome": "As subestruturas, crescimento e desenvolvimento do Novo Estado"
+        }
+      ]
+    }
+  ]
+}

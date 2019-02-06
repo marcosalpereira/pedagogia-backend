@@ -1,0 +1,52 @@
+{
+  "nome": "Filosofia da História",
+  "nivel": { "id": 1 },
+  "temas": [
+    {
+      "nome": "Tema I",
+      "capitulos": [
+        { "nome": "Caráter geral da História" },
+        { "nome": "Fundamentos teóricos" },
+        { "nome": "A Lógica da História" },
+        { "nome": "Crítica do conhecimento histórico" },
+        { "nome": "Filosofia da História" }
+      ]
+    },
+    {
+      "nome": "Tema II",
+      "capitulos": [
+        { "nome": "Métodos de exposição da História" },
+        { "nome": "Classificação Básica das Fontes de História" },
+        { "nome": "Ciência auxiliares e componentes psicológicos" }
+      ]
+    },
+    {
+      "nome": "Tema III",
+      "capitulos": [{ "nome": "Sentido da História e da Mitologia" }]
+    },
+    {
+      "nome": "Tema IV",
+      "capitulos": [
+        {
+          "nome": "A História no formação do Eu-consciência através do Eu-lembrança"
+        },
+        { "nome": "Ritmos históricos e yugas" },
+        { "nome": "A teoria do eterno retorno e os ciclos-históricos" },
+        { "nome": "A teoria Histórica de Cícero" },
+        { "nome": "O nosso passado e a Nova civilização" },
+        { "nome": "Teoria do Logos Platônico e a História Futura" },
+        {
+          "nome": "Os Arquétipos fixos: a evolução como progressão da consciência entre hiatos móveis"
+        }
+      ]
+    },
+    {
+      "nome": "Tema V",
+      "capitulos": [
+        { "nome": "Dharma-Karma - Buda e a Libertação da História" },
+        { "nome": "Dharma coletivo, individual, pessoal" },
+        { "nome": "Karma coletivo, individual, pessoal" }
+      ]
+    }
+  ]
+}

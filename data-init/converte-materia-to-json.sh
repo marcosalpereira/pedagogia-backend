@@ -9,9 +9,12 @@ output=$input.json
 echo "{\"nome\": \"$tema\",\"nivel\": { \"id\": $nivel },\"temas\": [" > $output
 
 sed -r \
- -e 's/ +$//g' \
+ -e 's/^ *-? *([^ ]*)$/\1/g' \
+ -e 's/^\d\.//g' \
+ -e 's/^"/d'
+ -e 's/"$/d'
  -e 's/"/\\"/g' \
- -e '/^$/d' \
+ -e '/^ *$/d' \
  -e '/^[Tt][Ee][Mm][Aa]/! s/(.+)/\{"nome": "\1" \},/gi' \
  -e '/^[Tt][Ee][Mm][Aa]/  s/(.+)/\]\},\{"nome": "\1","capitulos": \[/gi' \
  $input >> $output
