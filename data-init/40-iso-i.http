@@ -1,13 +1,13 @@
-POST  https://72.14.188.252:8443/pedagogia/api/login
+POST  https://nafortaleza.com.br:8443/pedagogia/api/login
 Content-Type: application/json
 
 { "email": "user@na.com.br", "senha": "123"}
 
 ###
 
-POST  https://72.14.188.252:8443/pedagogia/api/materias
+POST  https://nafortaleza.com.br:8443/pedagogia/api/materias
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTI0MDM1MSwiUk9MRVMiOiJST0xFX1VTRVIifQ.YGGss5I8iwZ2xmIAj8cQvOyNsYUJU-I7e8NyU86BXZHoWj9P-NMUC2SfCSiP03DoGoZmsmurBNLmGWqLwVmgxw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ2ODEwNSwiUk9MRVMiOiJST0xFX1VTRVIifQ.DHLlUv0HlPbmczHv7da8NWwdPzEXixw-1garQBNRa1oVkBjAHfrEGhmpp4P0hjSBZoAjyM5cpOv-B_e6mqueAQ
 
 {
   "nome": "ISO I",

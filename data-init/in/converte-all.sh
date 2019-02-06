@@ -1,0 +1,1 @@
+for f in *.csv; do ../converte-materia-to-json.sh "$f"; done
