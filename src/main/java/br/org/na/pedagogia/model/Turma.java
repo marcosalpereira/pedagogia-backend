@@ -37,6 +37,9 @@ public class Turma extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 	
+	@Size(max = 50)
+	private String sala;
+	
 	/**
 	 * Codigo no mercurio
 	 */

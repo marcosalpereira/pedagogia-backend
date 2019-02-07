@@ -15,3 +15,10 @@ aula.getPresencas().forEach(p -> p.setAula(aula));
 Aula entity = aulaRepository.save(aula);
 
 ###
+
+[postgres]
+para poder se logar como usario/senha usar method 'trust' no pg_hba.conf
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+local   all             na                                      trust
+
