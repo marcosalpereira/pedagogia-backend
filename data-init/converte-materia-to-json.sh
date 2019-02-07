@@ -41,7 +41,7 @@ awk -i inplace -v RS="\0" -v ORS="" '{gsub(/\},\n\]\}/,"}\n]}")}7' "$output"
 
 echo "POST  https://nafortaleza.com.br:8443/pedagogia/api/materias" > 1
 echo "Content-Type: application/json" >> 1
-echo "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ2ODEwNSwiUk9MRVMiOiJST0xFX1VTRVIifQ.DHLlUv0HlPbmczHv7da8NWwdPzEXixw-1garQBNRa1oVkBjAHfrEGhmpp4P0hjSBZoAjyM5cpOv-B_e6mqueAQ" >> 1
+echo "Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ5OTA4NSwiUk9MRVMiOiJST0xFX1VTRVIifQ.2XumgaTZsfzUTodiZ1AMlTp-Ei0X5it5UJUWo-ZFCxnXgUeqIFDqYsuS7JtZW4tDqj47OwulPoX0OLAgjcNUgQ" >> 1
 echo "" >> 1
 cat 1 "$output" > 2
 mv 2 "$output"

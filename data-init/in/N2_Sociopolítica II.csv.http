@@ -1,0 +1,59 @@
+POST  https://nafortaleza.com.br:8443/pedagogia/api/materias
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ5OTA4NSwiUk9MRVMiOiJST0xFX1VTRVIifQ.2XumgaTZsfzUTodiZ1AMlTp-Ei0X5it5UJUWo-ZFCxnXgUeqIFDqYsuS7JtZW4tDqj47OwulPoX0OLAgjcNUgQ
+
+{"nome": "Sociopolítica II","nivel": { "id": 2 },"temas": [
+{"nome": "Tema 0","capitulos": [
+{"nome": "Prólogo" },
+{"nome": "As Forças Ocultas na Evolução de Grupos Humanos" },
+{"nome": "O Que Podemos Aprender com Isso?" },
+{"nome": "Como é Necessário Proceder?" }
+]},{"nome": "Tema 1 – Os Fundamentos","capitulos": [
+{"nome": "O Indivíduo" },
+{"nome": "Os Caminhos da Individuação" },
+{"nome": "A Sociedade" },
+{"nome": "A Formação da Sociedade Segundo Platão" },
+{"nome": "O Estado" }
+]},{"nome": "Tema 2","capitulos": [
+{"nome": "– O Mito da Caverna" }
+]},{"nome": "Tema 3","capitulos": [
+{"nome": "– O Mito da Democracia" }
+]},{"nome": "Tema 4 – O Simbolismo da Esfinge","capitulos": [
+{"nome": "A Relação com o Significado da Esfinge" }
+]},{"nome": "Tema 5 – As Sub-Estruturas e os Mecanismos de Governos nas Chamadas Democracias","capitulos": [
+{"nome": "Acerca do Tempo" },
+{"nome": "Acerca do Rol ou Função" },
+{"nome": "Acerca do Crescimento" },
+{"nome": "Acerca da Cultura" }
+]},{"nome": "Tema 6","capitulos": [
+{"nome": "– O Mundo sensível e o Mundo Real" }
+]},{"nome": "Tema 7","capitulos": [
+{"nome": "– Os Princípios do Novo Estado e da Nova Civilização" }
+]},{"nome": "Tema 8 – A Forma Geral do Novo Estado","capitulos": [
+{"nome": "A Forma Ideal" }
+]},{"nome": "Tema 9 – A Finalidade do Novo Estado e a Função do Governo","capitulos": [
+{"nome": "Como Alcançar o Bom, O Belo e o Justo?" }
+]},{"nome": "Tema 10 – A Educação","capitulos": [
+{"nome": "Os Aspectos da Educação no Novo Estado" },
+{"nome": "As etapas da Educação no Estado Novo" },
+{"nome": "Pré-Natal" },
+{"nome": "Primeira Infância" },
+{"nome": "Segunda Infância" },
+{"nome": "Pré-Adolescência" },
+{"nome": "Adolescência" },
+{"nome": "Juventude" },
+{"nome": "Maturidade" },
+{"nome": "A Velhice" }
+]},{"nome": "Tema 11","capitulos": [
+{"nome": "– Justiça Individual e Justiça Política" }
+]},{"nome": "Tema 12 – O Trabalho","capitulos": [
+{"nome": "O Sentido do Trabalho" }
+]},{"nome": "Tema 13","capitulos": [
+{"nome": "– A propriedade e o Estado Escravagista" }
+]},{"nome": "Tema 14","capitulos": [
+{"nome": "– A Economia" }
+]},{"nome": "Tema 15","capitulos": [
+{"nome": "– A Arte" }
+]},{"nome": "Tema 16","capitulos": [
+{"nome": "Epílogo" }
+]}]}

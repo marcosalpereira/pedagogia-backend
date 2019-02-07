@@ -1,0 +1,160 @@
+POST  https://nafortaleza.com.br:8443/pedagogia/api/materias
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ5OTA4NSwiUk9MRVMiOiJST0xFX1VTRVIifQ.2XumgaTZsfzUTodiZ1AMlTp-Ei0X5it5UJUWo-ZFCxnXgUeqIFDqYsuS7JtZW4tDqj47OwulPoX0OLAgjcNUgQ
+
+{"nome": "História da Filosofia Medieval","nivel": { "id": 2 },"temas": [
+{"nome": "Tema 0","capitulos": [
+{"nome": "História da Filosofia Medieval (Livro e Apostilas a partir do T8)" }
+]},{"nome": "Tema 1 – Introdução","capitulos": [
+{"nome": "O Cristianismo e sua Filosofia" },
+{"nome": "Escoas Iniciáticas" },
+{"nome": "Escolas de Filosofia" },
+{"nome": "As Religiões" }
+]},{"nome": "Tema 2 – Cristo","capitulos": [
+{"nome": "Introdução" },
+{"nome": "Cartas de São Paulo" },
+{"nome": "Evangelho de São João" },
+{"nome": "A Patrística" },
+{"nome": "Características Gerais" },
+{"nome": "O Primeiro Período da Patrística" },
+{"nome": "O Segundo Período da Patrística" },
+{"nome": "A última Etapa" },
+{"nome": "A Patrística dos Dois Primeiros Séculos" },
+{"nome": "Os Apologistas" },
+{"nome": "Atenágoras de atenas" },
+{"nome": "Teófilo de Antióquia" },
+{"nome": "A Gnose" },
+{"nome": "Basílides" },
+{"nome": "Carpócrates" },
+{"nome": "Valentino" },
+{"nome": "Os Detratores da Gnose" },
+{"nome": "Apologistas Latinos" },
+{"nome": "Tertuliano" },
+{"nome": "Félix Minúcio" },
+{"nome": "Arnóbio" },
+{"nome": "Lactâncio" },
+{"nome": "A Patrística dos Séculos III e IV" },
+{"nome": "Clemente de Alexandria" },
+{"nome": "Orígenes" },
+{"nome": "Basílio, O Grande" },
+{"nome": "Gregório de Nazianceno" },
+{"nome": "Gregório de Nisa" }
+]},{"nome": "Tema 3 – Santo Agostinho","capitulos": [
+{"nome": "Introdução" },
+{"nome": "Vidas e Obras" },
+{"nome": "A Investigação e sua Finalidade: Deus e a Alma" },
+{"nome": "Deus" },
+{"nome": "O Homem" },
+{"nome": "A Criação e o Tempo" },
+{"nome": "A Cidadania de Deus e a Cidade Terrestre" },
+{"nome": "Decadência da Patrística" },
+{"nome": "Os Gregos" },
+{"nome": "Sinésio de Cirene" },
+{"nome": "Nemésio" },
+{"nome": "Procópio e Eneias" },
+{"nome": "Zacarias, O Escolástico" },
+{"nome": "Dionísio, o Areopagita ou Pseudo-Dionísio" },
+{"nome": "João Damasceno" },
+{"nome": "Os Latinos" },
+{"nome": "Boecio" },
+{"nome": "Papa Gregório, O Magno" },
+{"nome": "São Isidoro de Sevilla" },
+{"nome": "Beda, O Venerável" }
+]},{"nome": "Tema 4 – A Escolástica: Características e seus Filósofos","capitulos": [
+{"nome": "Introdução" },
+{"nome": "Pré-escolástica" },
+{"nome": "Alta Escolástica" },
+{"nome": "Florescimento da Escolástica" },
+{"nome": "Dissolução da Escolástica" },
+{"nome": "Alcuino" },
+{"nome": "Rabano Mauro" },
+{"nome": "Juan de Escoto Eriugena" },
+{"nome": "Os Séculos X, XI e XII e suas Características" },
+{"nome": "Santo Anselmo de Aosta" },
+{"nome": "Suas Idéias" },
+{"nome": "Demonstração da Existência de Deus" },
+{"nome": "Abelardo" },
+{"nome": "Sua Doutrina" },
+{"nome": "Filosofia e Revelação" },
+{"nome": "Relação entre Deus e o Mundo" },
+{"nome": "A Escola de Chartres" },
+{"nome": "Constantino Africano" },
+{"nome": "Bernardo" },
+{"nome": "Gilbert de La Porré" },
+{"nome": "Juan de Salisbury" },
+{"nome": "Os Cátaros" },
+{"nome": "Os Amaurianos" },
+{"nome": "Abade Joaquim de Fiore" }
+]},{"nome": "Tema 5 – A Mística Medieval","capitulos": [
+{"nome": "Introdução" },
+{"nome": "Bernardo de Claraval" },
+{"nome": "Hugo de São Victor" },
+{"nome": "A Sistematização da Teologia" }
+]},{"nome": "Tema 6 – Filosofia Muçulmana","capitulos": [
+{"nome": "Introdução" },
+{"nome": "As Primeiras Atividades Filosóficas" },
+{"nome": "Al-Kindi" },
+{"nome": "Alfarabi" },
+{"nome": "Avicena" },
+{"nome": "Sua Filososfia" },
+{"nome": "Al-Gazel" },
+{"nome": "Avempace (Ibn Badcha)" },
+{"nome": "Abentofail" },
+{"nome": "Averroes" },
+{"nome": "Sua Filosofia" },
+{"nome": "O Intelecto" },
+{"nome": "A Criação do Mundo" }
+]},{"nome": "Tema 7 – Filosofia Hebraica: Cabala","capitulos": [
+{"nome": "Isaac Israeli" },
+{"nome": "Saadia" },
+{"nome": "Ibn Gabirol" },
+{"nome": "Maimonides" }
+]},{"nome": "Tema 8 – São Boaventura (Apostila)","capitulos": [
+{"nome": "A Polêmica Antiaristotélica" },
+{"nome": "Vida e Obras (1221 – 1274)" },
+{"nome": "Fé e Ciência" },
+{"nome": "Teoria do Conhecimento" },
+{"nome": "Metafísica" },
+{"nome": "O Homem" },
+{"nome": "A Sindéresis" },
+{"nome": "Santo Alberto Magno – Vida e Obras (1193 – 1280)" },
+{"nome": "Sua Filosofia" }
+]},{"nome": "Tema 9 – Santo Tomas de Aquino (Apostila)","capitulos": [
+{"nome": "Vida e Obras (1225 ou 1226 – 1274)" },
+{"nome": "Teoria do Conhecimento" },
+{"nome": "Entendimento Divino" },
+{"nome": "Entendimento Angélico" },
+{"nome": "Entendimento Humano" },
+{"nome": "Metafísica" },
+{"nome": "Potência Matéria Essência                                                                                                                                                               Ato Forma Existência" },
+{"nome": "Teologia e Provas da Existência de Deus" },
+{"nome": "Via Cosmológica" },
+{"nome": "Via Causal" },
+{"nome": "Via da Relação entre o Possível e o Necessário" },
+{"nome": "Via dos Graus" },
+{"nome": "Via do Governo das Coisas" },
+{"nome": "O Homem" }
+]},{"nome": "Tema 10 – O Século XIII e a Lógica (Apostila)","capitulos": [
+{"nome": "Ramon LLULL (Raimundo Lulio) (1235 – 1315)" }
+]},{"nome": "Tema 11 – O Século XIII e a Filososfia da Natureza (Apostila)","capitulos": [
+{"nome": "Roger Bacon (1210/1214? – 1292?)" },
+{"nome": "João Duns Escoto" },
+{"nome": "¨Doctor Subtilis¨" },
+{"nome": "Vidas e Obras (1266 ou 1274 – 1308)" },
+{"nome": "Ciência e Fé" },
+{"nome": "Teoria do Conhecimento" },
+{"nome": "Deus" },
+{"nome": "O Homem" },
+{"nome": "Guillermo de Ockhan" },
+{"nome": "Vida e Obras (ao redor de 1290-1348 ou 1349)" },
+{"nome": "Teoria do Conhecimento" },
+{"nome": "Metafísica" },
+{"nome": "Preliminares de uma Física Nascente" },
+{"nome": "O Homem" },
+{"nome": "Pensamento Político" },
+{"nome": "A Última Escolástica" }
+]},{"nome": "Tema 12 – O Misticismo Alemão (Apostila)","capitulos": [
+{"nome": "Mestre Eckhart" },
+{"nome": "Vida e Obras (1260 – 1327)" },
+{"nome": "Doutrina" }
+]}]}

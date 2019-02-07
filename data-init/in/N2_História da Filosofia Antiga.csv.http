@@ -1,0 +1,135 @@
+POST  https://nafortaleza.com.br:8443/pedagogia/api/materias
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ5OTA4NSwiUk9MRVMiOiJST0xFX1VTRVIifQ.2XumgaTZsfzUTodiZ1AMlTp-Ei0X5it5UJUWo-ZFCxnXgUeqIFDqYsuS7JtZW4tDqj47OwulPoX0OLAgjcNUgQ
+
+{"nome": "História da Filosofia Antiga","nivel": { "id": 2 },"temas": [
+{"nome": "Tema I","capitulos": [
+{"nome": "Introdução" }
+]},{"nome": "Tema II - Introdução à Filosofia Grega","capitulos": [
+{"nome": "Primeiro Princípio" },
+{"nome": "Segundo Princípio" },
+{"nome": "Terceiro Princípio" }
+]},{"nome": "Tema III - Introdução aos Pré-Socráticos","capitulos": [
+{"nome": "Temas gerais que tratam os Pré-Socráticos" }
+]},{"nome": "Tema IV - Os Pré Socráticos","capitulos": [
+{"nome": "Escola de Mileto" },
+{"nome": "Tales de Mileto" },
+{"nome": "Anaximandro" },
+{"nome": "Amaxímenes" }
+]},{"nome": "Tema V - Os Pitagóricos","capitulos": [
+{"nome": "Pitágoras" },
+{"nome": "Suas teorias" },
+{"nome": "Escola pitagórica" },
+{"nome": "Ausmáticos e matemáticos" },
+{"nome": "As matemáticas pitagóricas" }
+]},{"nome": "Tema VI - A Escola de Eléia","capitulos": [
+{"nome": "Xenófanes" },
+{"nome": "Parménides" },
+{"nome": "Obras de Parmênides" },
+{"nome": "Introdução" },
+{"nome": "O Caminho da Verdade" },
+{"nome": "O Caminho da Opinião" },
+{"nome": "Predicados do Ente" },
+{"nome": "A opinião" },
+{"nome": "O movimento" },
+{"nome": "Metafisica" },
+{"nome": "Seus continuadores" },
+{"nome": "Zenão" },
+{"nome": "Melisso" },
+{"nome": "Adendo" }
+]},{"nome": "Tema VII - Heráclito","capitulos": [
+{"nome": "Doutrina" }
+]},{"nome": "Tema VIII - Empédocles","capitulos": [
+{"nome": "Doutrina" }
+]},{"nome": "Tema IX - Anaxágoras","capitulos": [
+{"nome": "Doutrina" }
+]},{"nome": "Tema X - Os Atomistas","capitulos": [
+{"nome": "Leucipo" },
+{"nome": "A Doutrina" },
+{"nome": "Demócrito" },
+{"nome": "A Doutrina - os átomos" }
+]},{"nome": "Tema XI - A Sofística","capitulos": [
+{"nome": "Protágoras" },
+{"nome": "Górgias" }
+]},{"nome": "Tema XII - Sócrates","capitulos": [
+{"nome": "Doutrina – Os Escritos" },
+{"nome": "Diálogo" },
+{"nome": "Indução – Definição" },
+{"nome": "Ensinamento" },
+{"nome": "Fundação Educadora e Formativa do Trabalho" },
+{"nome": "Sobre a Ciência" },
+{"nome": "Virtude" },
+{"nome": "O Bem" },
+{"nome": "A Felicidade" },
+{"nome": "A Religiosidade e a Mística" },
+{"nome": "A Bondade e o Amor" },
+{"nome": "A Imortalidade da Alma" },
+{"nome": "Apontamentos Acropolitanos" }
+]},{"nome": "Tema XIII - Platão","capitulos": [
+{"nome": "Obras" },
+{"nome": "Doutrina – As Idéias" },
+{"nome": "Conceito de Unidade" },
+{"nome": "Conceito de Imutabilidade" },
+{"nome": "Conceito de Eternidade" },
+{"nome": "A Reminiscência – O Conhecimento Segundo Platão" },
+{"nome": "Mito da Caverna" },
+{"nome": "O Ser" },
+{"nome": "O Bem" },
+{"nome": "A Criação" },
+{"nome": "Doutrina da Alma" },
+{"nome": "As Virtudes" },
+{"nome": "Indivíduo e Estado" },
+{"nome": "O Amor" }
+]},{"nome": "Tema XIV - Aristóteles","capitulos": [
+{"nome": "Biografia" },
+{"nome": "Suas Obras" },
+{"nome": "Obras Esotéricas ou Acromáticas" },
+{"nome": "Organón" },
+{"nome": "A Metafísica" },
+{"nome": "Escritos sobre Física, História Natural,                                                                                                                           Matemática e Psicologia" },
+{"nome": "Escritos sobre Ética, Política, Economia e Retórica" },
+{"nome": "As Ciências" },
+{"nome": "Os Graus do Saber" },
+{"nome": "Metafísica Aristotélica" },
+{"nome": "Sobre as Substâncias" },
+{"nome": "Os Modos de Ser" },
+{"nome": "O Ser em Si ou Por Acidente" },
+{"nome": "Segundo as Categorias" },
+{"nome": "O Ser Verdadeiro e o Ser Falso" },
+{"nome": "Segundo a Potência e o Ato" },
+{"nome": "Matéria e Forma" },
+{"nome": "O Movimento" },
+{"nome": "As Causas" },
+{"nome": "Deus" },
+{"nome": "O Ente Como Transcendental" },
+{"nome": "Essência" },
+{"nome": "A Lógica Aristotélica" },
+{"nome": "Conteúdo do Organon" },
+{"nome": "A Doutrina da Alma" },
+{"nome": "A Estética" },
+{"nome": "A Política" }
+]},{"nome": "Tema XV – Escolas Socráticas e Moralistas","capitulos": [
+{"nome": "A Escola Cínica" },
+{"nome": "A Escola Cirenáica" }
+]},{"nome": "Tema XVI – Epicurismo","capitulos": [
+{"nome": "Ceticismo" },
+{"nome": "Ecletismo" }
+]},{"nome": "Tema XVII – Estoicismo","capitulos": [
+{"nome": "Origens do Estoicismo" },
+{"nome": "Doutrina Estóica" },
+{"nome": "Física" },
+{"nome": "Religião" },
+{"nome": "Psicologia" },
+{"nome": "Teoria do Conhecimento" },
+{"nome": "Ética" },
+{"nome": "Política e Direito" }
+]},{"nome": "Tema XVIII – Neoplatonismo","capitulos": [
+{"nome": "Precursores" },
+{"nome": "Doutrina" },
+{"nome": "Unidade de Toda Realidade Essencial" },
+{"nome": "Reencarnação das Almas" },
+{"nome": "Necessidade de Purificação" },
+{"nome": "O Uno e o Ser – A Emanação" },
+{"nome": "A Alma – Consciência – Retorno a Deus" },
+{"nome": "Filósofos Neoplatônicos" }
+]}]}

@@ -39,7 +39,7 @@ public class Tema extends BaseModel {
 	@Column
 	private Integer numero;
 
-	@Size(max = 100)
+	@Size(max = 300)
 	private String nome;
 
 	@JsonDeserialize(as = LinkedHashSet.class)

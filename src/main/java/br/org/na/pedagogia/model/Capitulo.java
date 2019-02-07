@@ -30,7 +30,7 @@ public class Capitulo extends BaseModel {
 	private Integer numero;
 	
 	@NotNull
-	@Size(max = 100)
+	@Size(max = 300)
 	private String nome;
 
 }
