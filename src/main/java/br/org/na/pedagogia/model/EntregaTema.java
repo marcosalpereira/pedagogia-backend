@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -19,6 +20,13 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
+
+@NamedQuery(
+		name = "EntregaTema.findLastTemaEntregue",
+		query = "SELECT et FROM EntregaTema et "
+				+ "WHERE et.turma.id = ?1 "
+				+ "and et.tema.materia.id = ?2"
+				+ "order by data DESC")
 public class EntregaTema extends BaseModel {
 	private static final long serialVersionUID = 1L;
 
@@ -41,12 +49,5 @@ public class EntregaTema extends BaseModel {
 		turma = new Turma(idTurma);
 		tema = new Tema(idTema);
 	}
-
-	//	public static void prepararDeserializacao(EntregaTema src, List<EntregaTema> entregas) {
-	//		entregas.forEach(entrega -> {
-	//	        entrega.setTema(src.getTema());
-	//	        entrega.setTurma(src.getTurma());
-	//		});
-	//	}
 
 }

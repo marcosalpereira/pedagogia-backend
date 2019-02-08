@@ -115,7 +115,7 @@ ALTER SEQUENCE public.aula_id_seq OWNED BY public.aula.id;
 CREATE TABLE public.capitulo (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    nome character varying(100) NOT NULL,
+    nome character varying(300) NOT NULL,
     numero integer NOT NULL,
     tema_id bigint
 );
@@ -215,6 +215,42 @@ ALTER TABLE public.materia_id_seq OWNER TO na;
 --
 
 ALTER SEQUENCE public.materia_id_seq OWNED BY public.materia.id;
+
+
+--
+-- Name: materia_turma; Type: TABLE; Schema: public; Owner: na
+--
+
+CREATE TABLE public.materia_turma (
+    id bigint NOT NULL,
+    version integer DEFAULT 0,
+    materia_id bigint NOT NULL,
+    professor_id bigint NOT NULL,
+    turma_id bigint
+);
+
+
+ALTER TABLE public.materia_turma OWNER TO na;
+
+--
+-- Name: materia_turma_id_seq; Type: SEQUENCE; Schema: public; Owner: na
+--
+
+CREATE SEQUENCE public.materia_turma_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.materia_turma_id_seq OWNER TO na;
+
+--
+-- Name: materia_turma_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: na
+--
+
+ALTER SEQUENCE public.materia_turma_id_seq OWNED BY public.materia_turma.id;
 
 
 --
@@ -397,7 +433,7 @@ ALTER SEQUENCE public.sede_id_seq OWNED BY public.sede.id;
 CREATE TABLE public.tema (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    nome character varying(100),
+    nome character varying(300),
     numero integer NOT NULL,
     materia_id bigint
 );
@@ -438,7 +474,8 @@ CREATE TABLE public.turma (
     nome character varying(100) NOT NULL,
     nivel_id bigint NOT NULL,
     representante_id bigint,
-    sede_id bigint NOT NULL
+    sede_id bigint NOT NULL,
+    sala character varying(50)
 );
 
 
@@ -476,18 +513,6 @@ ALTER TABLE public.turma_id_seq OWNER TO na;
 
 ALTER SEQUENCE public.turma_id_seq OWNED BY public.turma.id;
 
-
---
--- Name: turma_professores; Type: TABLE; Schema: public; Owner: na
---
-
-CREATE TABLE public.turma_professores (
-    turma_id bigint NOT NULL,
-    professores_id bigint NOT NULL
-);
-
-
-ALTER TABLE public.turma_professores OWNER TO na;
 
 --
 -- Name: usuario; Type: TABLE; Schema: public; Owner: na
@@ -571,6 +596,13 @@ ALTER TABLE ONLY public.entrega_tema ALTER COLUMN id SET DEFAULT nextval('public
 --
 
 ALTER TABLE ONLY public.materia ALTER COLUMN id SET DEFAULT nextval('public.materia_id_seq'::regclass);
+
+
+--
+-- Name: materia_turma id; Type: DEFAULT; Schema: public; Owner: na
+--
+
+ALTER TABLE ONLY public.materia_turma ALTER COLUMN id SET DEFAULT nextval('public.materia_turma_id_seq'::regclass);
 
 
 --
@@ -667,6 +699,14 @@ ALTER TABLE ONLY public.entrega_tema
 
 ALTER TABLE ONLY public.materia
     ADD CONSTRAINT materia_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: materia_turma materia_turma_pkey; Type: CONSTRAINT; Schema: public; Owner: na
+--
+
+ALTER TABLE ONLY public.materia_turma
+    ADD CONSTRAINT materia_turma_pkey PRIMARY KEY (id);
 
 
 --
@@ -798,11 +838,27 @@ ALTER TABLE ONLY public.aluno
 
 
 --
--- Name: turma_professores fk8535n5xojfkytwuwh6qs27150; Type: FK CONSTRAINT; Schema: public; Owner: na
+-- Name: materia_turma fk8f0wajuppi6bsx64d00s1m357; Type: FK CONSTRAINT; Schema: public; Owner: na
 --
 
-ALTER TABLE ONLY public.turma_professores
-    ADD CONSTRAINT fk8535n5xojfkytwuwh6qs27150 FOREIGN KEY (professores_id) REFERENCES public.professor(id);
+ALTER TABLE ONLY public.materia_turma
+    ADD CONSTRAINT fk8f0wajuppi6bsx64d00s1m357 FOREIGN KEY (professor_id) REFERENCES public.professor(id);
+
+
+--
+-- Name: materia_turma fk8gbokh4y8790vptculhy7sy7i; Type: FK CONSTRAINT; Schema: public; Owner: na
+--
+
+ALTER TABLE ONLY public.materia_turma
+    ADD CONSTRAINT fk8gbokh4y8790vptculhy7sy7i FOREIGN KEY (materia_id) REFERENCES public.materia(id);
+
+
+--
+-- Name: materia_turma fkdj8itrowsxk61mm53rbqhg4vg; Type: FK CONSTRAINT; Schema: public; Owner: na
+--
+
+ALTER TABLE ONLY public.materia_turma
+    ADD CONSTRAINT fkdj8itrowsxk61mm53rbqhg4vg FOREIGN KEY (turma_id) REFERENCES public.turma(id);
 
 
 --
@@ -883,14 +939,6 @@ ALTER TABLE ONLY public.turma_alunos
 
 ALTER TABLE ONLY public.turma
     ADD CONSTRAINT fknbkmci7r0erwgp15wq4ol7ykw FOREIGN KEY (nivel_id) REFERENCES public.nivel(id);
-
-
---
--- Name: turma_professores fkos8dg9v3fw758h659tian0839; Type: FK CONSTRAINT; Schema: public; Owner: na
---
-
-ALTER TABLE ONLY public.turma_professores
-    ADD CONSTRAINT fkos8dg9v3fw758h659tian0839 FOREIGN KEY (turma_id) REFERENCES public.turma(id);
 
 
 --

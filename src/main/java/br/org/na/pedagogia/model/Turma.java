@@ -1,20 +1,26 @@
 package br.org.na.pedagogia.model;
 
 import java.time.DayOfWeek;
+import java.util.Collections;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +31,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonIgnoreProperties(value = {"alunos", "professores"}, allowSetters=true)
+@JsonIgnoreProperties(value = {"alunos", "professores", "materias"}, allowSetters=true)
 public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
@@ -50,8 +56,9 @@ public class Turma extends BaseModel {
 	@ManyToMany
 	private List<Aluno> alunos;
 	
-	@ManyToMany
-	private List<Professor> professores;
+	@JsonManagedReference
+	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
+	private Set<MateriaTurma> materias;
 
 	@OneToOne
 	private Aluno representante;
@@ -72,5 +79,16 @@ public class Turma extends BaseModel {
 		this.sede = new Sede(idSede);
 		this.diaSemana = diaSemana;
 	}
+
+	public List<Professor> getProfessores() {
+		if (materias == null) return Collections.emptyList();
+		return materias.stream().map(mt -> mt.getProfessor()).collect(Collectors.toList());
+	}
+	
+	public List<Materia> getMaterias() {
+		if (materias == null) return Collections.emptyList();
+		return materias.stream().map(mt -> mt.getMateria()).collect(Collectors.toList());
+	}
+	
 	
 }

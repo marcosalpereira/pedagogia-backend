@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
-import org.springframework.security.access.annotation.Secured;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +38,16 @@ public class EntregaTemaController {
 		List<EntregaTema> entregasBD = repository.findAll(ex, Sort.by(Order.asc("aluno.nome")));
 		return entregasBD;
 	}
+	
+	@GetMapping("last")
+	//TODO definir perfis @Secured("ADMIN")
+	public ResponseEntity<EntregaTema> findLastTemaEntregue(
+			@RequestParam("idTurma") long idTurma,
+			@RequestParam("idMateria") long idMateria
+			) {
+		return ResponseEntity.of(repository.findLastTemaEntregue(idTurma, idMateria));
+	}
+	
 
 	@PostMapping
 	//TODO definir perfis @Secured("ADMIN")

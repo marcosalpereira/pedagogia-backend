@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.business.TurmaBC;
 import br.org.na.pedagogia.model.Aluno;
+import br.org.na.pedagogia.model.Materia;
 import br.org.na.pedagogia.model.Professor;
 import br.org.na.pedagogia.model.Turma;
 import br.org.na.pedagogia.repository.TurmaRepository;
@@ -46,9 +47,14 @@ public class TurmaController {
 		return turmaBC.findById(idTurma, turma -> turma.getProfessores());
 	}
 	
+	@GetMapping("{id}/materias")
+	public List<Materia> findMaterias(@PathVariable("id") long idTurma) {
+		return turmaBC.findById(idTurma, turma -> turma.getMaterias());
+	}	
+	
 	@GetMapping("{id}/alunos")
 	public List<Aluno> findAlunos(@PathVariable("id") long idTurma) {
-		return turmaBC.findById(idTurma, t -> t.getAlunos());
+		return turmaBC.findById(idTurma, turma -> turma.getAlunos());
 	}
 	
 	@PostMapping
