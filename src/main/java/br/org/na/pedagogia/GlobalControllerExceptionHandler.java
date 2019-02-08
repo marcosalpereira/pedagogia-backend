@@ -1,6 +1,5 @@
 package br.org.na.pedagogia;
 
-import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,10 +22,4 @@ class GlobalControllerExceptionHandler {
 		// Nothing to do
 	}
 
-	@ExceptionHandler(ResourceNotFoundException.class)
-	@ResponseStatus(HttpStatus.OK)
-	public String handleResourceNotFoundException() {
-		System.out.println("redirect to index");
-		return "/index.html";
-	}
 }
