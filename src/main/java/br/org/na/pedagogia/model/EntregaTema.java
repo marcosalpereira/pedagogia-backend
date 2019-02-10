@@ -21,12 +21,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-@NamedQuery(
-		name = "EntregaTema.findLastTemaEntregue",
-		query = "SELECT et FROM EntregaTema et "
-				+ "WHERE et.turma.id = ?1 "
-				+ "and et.tema.materia.id = ?2"
-				+ "order by data DESC")
 public class EntregaTema extends BaseModel {
 	private static final long serialVersionUID = 1L;
 

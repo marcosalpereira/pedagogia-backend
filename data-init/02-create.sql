@@ -115,7 +115,7 @@ ALTER SEQUENCE public.aula_id_seq OWNED BY public.aula.id;
 CREATE TABLE public.capitulo (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    nome character varying(300) NOT NULL,
+    nome character varying(100) NOT NULL,
     numero integer NOT NULL,
     tema_id bigint
 );
@@ -433,7 +433,7 @@ ALTER SEQUENCE public.sede_id_seq OWNED BY public.sede.id;
 CREATE TABLE public.tema (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    nome character varying(300),
+    nome character varying(100),
     numero integer NOT NULL,
     materia_id bigint
 );

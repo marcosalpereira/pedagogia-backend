@@ -1,8 +1,8 @@
 POST  https://nafortaleza.com.br:8443/pedagogia/api/materias
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTQ5OTA4NSwiUk9MRVMiOiJST0xFX1VTRVIifQ.2XumgaTZsfzUTodiZ1AMlTp-Ei0X5it5UJUWo-ZFCxnXgUeqIFDqYsuS7JtZW4tDqj47OwulPoX0OLAgjcNUgQ
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyQG5hLmNvbS5iciIsImV4cCI6MTU0OTcyNjg4NiwiUk9MRVMiOiJST0xFX1VTRVIifQ.SKYqXdxthos-zw1xaRzFbE0vh1bptMII9tTLHD8E_rZqKEh-sx3rK8lPIaqGyM1LKe88eLVdhq8QYkFrHnczCw
 
-{"nome": "História da Filosofia Medieval","nivel": { "id": 2 },"temas": [
+{"nome": "História da Filosofia Oriental","nivel": { "id": 2 },"temas": [
 {"nome": "Tema 1 – Introducción","capitulos": [
 {"nome": "Contactos de Occidente com La Filosofía Oriental" },
 {"nome": "Grecia y Romna" },

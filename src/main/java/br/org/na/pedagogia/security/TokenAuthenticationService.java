@@ -38,20 +38,7 @@ public class TokenAuthenticationService {
 
 		String token = TOKEN_PREFIX + " " + JWT;
 		res.addHeader(HEADER_STRING, token);
-
-		res.addHeader("Vary", "Origin, Access-Control-Request-Method, Access-Control-Request-Headers");
-		res.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-		res.addHeader("Access-Control-Allow-Methods", "POST");
-		res.addHeader("Access-Control-Allow-Headers", "content-type");
 		res.addHeader("Access-Control-Expose-Headers", HEADER_STRING);
-		res.addHeader("Access-Control-Max-Age", "3600");
-		res.addHeader("Allow", "GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, PATCH");
-
-		//		try {
-		//			res.getOutputStream().print(token);
-		//		} catch (IOException e) {
-		//			e.printStackTrace();
-		//		}
 	}
 
 	public static Authentication getByToken(String token) {

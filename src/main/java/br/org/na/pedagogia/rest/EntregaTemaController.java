@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.EntregaTema;
+import br.org.na.pedagogia.model.Tema;
 import br.org.na.pedagogia.repository.EntregaTemaRepository;
 
 
@@ -41,7 +42,7 @@ public class EntregaTemaController {
 	
 	@GetMapping("last")
 	//TODO definir perfis @Secured("ADMIN")
-	public ResponseEntity<EntregaTema> findLastTemaEntregue(
+	public ResponseEntity<Tema> findLastTemaEntregue(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idMateria") long idMateria
 			) {

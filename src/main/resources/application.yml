@@ -1,0 +1,25 @@
+server:
+  port: 8443
+  servlet:
+    context-path: /pedagogia
+  ssl:
+    key-alias: tomcat
+    key-store: classpath:keystore.jks
+    key-store-password: nasete
+    key-store-type: JKS
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: na
+    url: jdbc:postgresql://localhost:5432/pedagogia
+    username: na
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: true

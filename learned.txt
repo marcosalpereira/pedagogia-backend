@@ -22,3 +22,7 @@ para poder se logar como usario/senha usar method 'trust' no pg_hba.conf
 # TYPE  DATABASE        USER            ADDRESS                 METHOD
 local   all             na                                      trust
 
+[mat-select]
+para que mudancas sejam percebebidas quando ngModel ou value usa um obejto, tem que usar a propriedade compareWith
+eu usei uma generica compareModelFn
+  
