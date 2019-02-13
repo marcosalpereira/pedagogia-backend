@@ -4,15 +4,20 @@ package br.org.na.pedagogia.security;
 import java.util.Collection;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.Sede;
@@ -22,13 +27,16 @@ import lombok.Setter;
 @Entity
 @Table(name = "usuario")
 @Getter @Setter
-public class Usuario extends BaseModel implements UserDetails{
+@JsonIgnoreProperties(value = { "senha", "password" }, allowSetters = true)
+public class Usuario extends BaseModel implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Column
+	@Email
 	private String email;
 
 	@Column
+	@NotNull
 	private String nome;
 
 	@Column
@@ -37,7 +45,7 @@ public class Usuario extends BaseModel implements UserDetails{
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Sede sede;
 
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Perfil> perfils;
 
 	@Override

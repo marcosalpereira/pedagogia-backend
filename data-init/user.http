@@ -1,0 +1,40 @@
+POST  https://localhost:8443/pedagogia/api/login
+Content-Type: application/json
+
+{ "email": "na@na.com.br", "senha": "1234"}
+
+###
+
+GET  https://localhost:8443/pedagogia/api/usuarios/na@na.com.br
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NTAwMjA1MzQsIlJPTEVTIjoiUk9MRV9BRE1JTiJ9.YEcVxP09fnRnaAG_CGidF5f7SgUUMcsVbEhGIyG5VP8O_OT9npdVtt5_1CxGnNru82UI6_jb3nyoqgVfWi6r_g
+
+###
+
+GET  https://localhost:8443/pedagogia/api/usuarios
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NTAwMjA1MzQsIlJPTEVTIjoiUk9MRV9BRE1JTiJ9.YEcVxP09fnRnaAG_CGidF5f7SgUUMcsVbEhGIyG5VP8O_OT9npdVtt5_1CxGnNru82UI6_jb3nyoqgVfWi6r_g
+
+###
+
+POST https://localhost:8443/pedagogia/api/usuarios/1/senha
+Content-Type: text/plain
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NTAwMjA1MzQsIlJPTEVTIjoiUk9MRV9BRE1JTiJ9.YEcVxP09fnRnaAG_CGidF5f7SgUUMcsVbEhGIyG5VP8O_OT9npdVtt5_1CxGnNru82UI6_jb3nyoqgVfWi6r_g
+
+1234
+
+###
+
+POST  https://localhost:8443/pedagogia/api/usuarios
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJuYUBuYS5jb20uYnIiLCJleHAiOjE1NTAwMjE1MDksIlJPTEVTIjoiUk9MRV9BRE1JTiJ9.jw7h5-Uf0oeAj9y1CF-rKCSmJgXLfop4YTgxa2dvq9cSLZv501e1Uws-PSGD1Y3arI78VxAJxZcxroP8D_5Ozg
+
+{ 
+    "nome": "marcos",
+    "email": "marcos@na.com.br", 
+    "senha": "1234",
+    "sede": { "id": 1},
+    "perfils": [
+        {"id": 1}
+    ]
+}
+
+###

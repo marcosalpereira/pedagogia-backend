@@ -1,7 +1,5 @@
 package br.org.na.pedagogia.security;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -25,11 +23,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailsService userDetailService;
 
-//	@Override
-//	public void configure(WebSecurity web) throws Exception {
-//		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
-//	}
-
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity
@@ -41,7 +34,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers(HttpMethod.GET,"/*").permitAll()
 			.antMatchers(HttpMethod.GET,"/assets/*").permitAll()
-//			.antMatchers(HttpMethod.OPTIONS,"/api/login").permitAll()
 			.antMatchers(HttpMethod.POST, "/api/login").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/versao").permitAll()
 			.anyRequest().permitAll()
