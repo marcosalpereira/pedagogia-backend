@@ -1,4 +1,4 @@
-package br.org.na.pedagogia.security;
+package br.org.na.pedagogia.auth;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import br.org.na.pedagogia.model.auth.Usuario;
 
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {

@@ -24,7 +24,7 @@ import br.org.na.pedagogia.repository.EntregaTemaRepository;
 
 @RestController
 @RequestMapping("/api/entregas-tema")
-public class EntregaTemaController {
+public class EntregaTemaRest {
 
 	@Autowired
 	private EntregaTemaRepository repository;

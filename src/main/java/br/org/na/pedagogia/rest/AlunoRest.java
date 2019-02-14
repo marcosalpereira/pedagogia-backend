@@ -19,7 +19,7 @@ import br.org.na.pedagogia.repository.AlunoRepository;
 
 @RestController
 @RequestMapping("/api/alunos")
-public class AlunoController {
+public class AlunoRest {
 
 	@Autowired
 	private AlunoRepository repository;

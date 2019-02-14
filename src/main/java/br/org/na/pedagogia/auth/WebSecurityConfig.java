@@ -1,4 +1,4 @@
-package br.org.na.pedagogia.security;
+package br.org.na.pedagogia.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +34,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 			.antMatchers(HttpMethod.GET,"/*").permitAll()
 			.antMatchers(HttpMethod.GET,"/assets/*").permitAll()
+			
+			.antMatchers(HttpMethod.GET, "/api/sedes").permitAll()
+			.antMatchers(HttpMethod.POST, "/api/usuarios/signon").permitAll()
 			.antMatchers(HttpMethod.POST, "/api/login").permitAll()
 			.antMatchers(HttpMethod.GET, "/api/versao").permitAll()
 			.anyRequest().permitAll()

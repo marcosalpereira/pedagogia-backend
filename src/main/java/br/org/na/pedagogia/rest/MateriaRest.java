@@ -17,7 +17,7 @@ import br.org.na.pedagogia.repository.MateriaRepository;
 
 @RestController
 @RequestMapping("/api/materias")
-public class MateriaController {
+public class MateriaRest {
 
 	@Autowired
 	private MateriaRepository repository;

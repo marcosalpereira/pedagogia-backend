@@ -1,3 +1,4 @@
+package br.org.na.pedagogia.auth;
 //package br.org.na.pedagogia.security;
 //
 //import org.apache.catalina.connector.Connector;

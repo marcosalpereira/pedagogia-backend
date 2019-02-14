@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -22,7 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "materia")
+@Table(name = "materia", uniqueConstraints = @UniqueConstraint(columnNames = "nome"))
 @Getter @Setter @NoArgsConstructor
 public class Materia extends BaseModel {
 	private static final long serialVersionUID = 1L;

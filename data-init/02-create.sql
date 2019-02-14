@@ -115,7 +115,7 @@ ALTER SEQUENCE public.aula_id_seq OWNED BY public.aula.id;
 CREATE TABLE public.capitulo (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    nome character varying(100) NOT NULL,
+    nome character varying(300) NOT NULL,
     numero integer NOT NULL,
     tema_id bigint
 );
@@ -433,7 +433,7 @@ ALTER SEQUENCE public.sede_id_seq OWNED BY public.sede.id;
 CREATE TABLE public.tema (
     id bigint NOT NULL,
     version integer DEFAULT 0,
-    nome character varying(100),
+    nome character varying(300),
     numero integer NOT NULL,
     materia_id bigint
 );
@@ -524,7 +524,8 @@ CREATE TABLE public.usuario (
     email character varying(255),
     nome character varying(255),
     senha character varying(255),
-    sede_id bigint NOT NULL
+    sede_id bigint NOT NULL,
+    signon boolean
 );
 
 
@@ -763,6 +764,22 @@ ALTER TABLE ONLY public.tema
 
 ALTER TABLE ONLY public.turma
     ADD CONSTRAINT turma_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: materia uk327l6c9d2i5c00g1gexca04dx; Type: CONSTRAINT; Schema: public; Owner: na
+--
+
+ALTER TABLE ONLY public.materia
+    ADD CONSTRAINT uk327l6c9d2i5c00g1gexca04dx UNIQUE (nome);
+
+
+--
+-- Name: usuario uk5171l57faosmj8myawaucatdw; Type: CONSTRAINT; Schema: public; Owner: na
+--
+
+ALTER TABLE ONLY public.usuario
+    ADD CONSTRAINT uk5171l57faosmj8myawaucatdw UNIQUE (email);
 
 
 --

@@ -1,4 +1,4 @@
-package br.org.na.pedagogia.security;
+package br.org.na.pedagogia.model.auth;
 
 
 import java.util.Collection;
@@ -11,7 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -25,7 +27,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "usuario")
+@Table(name = "usuario", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @Getter @Setter
 @JsonIgnoreProperties(value = { "senha", "password" }, allowSetters = true)
 public class Usuario extends BaseModel implements UserDetails {
@@ -33,14 +35,18 @@ public class Usuario extends BaseModel implements UserDetails {
 
 	@Column
 	@Email
+	@NotNull
 	private String email;
 
 	@Column
-	@NotNull
+	@NotBlank
 	private String nome;
 
 	@Column
 	private String senha;
+	
+	@Column
+	private boolean enabled;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Sede sede;
@@ -80,7 +86,7 @@ public class Usuario extends BaseModel implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return true;
+		return enabled;
 	}
 
 }

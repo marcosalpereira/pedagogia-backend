@@ -1,4 +1,4 @@
-package br.org.na.pedagogia.security;
+package br.org.na.pedagogia.model.auth;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package br.org.na.pedagogia.security;
+package br.org.na.pedagogia.auth;
 
 import java.util.Date;
 import java.util.List;

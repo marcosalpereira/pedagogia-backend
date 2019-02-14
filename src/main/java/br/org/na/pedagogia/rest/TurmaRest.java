@@ -25,7 +25,7 @@ import br.org.na.pedagogia.repository.TurmaRepository;
 
 @RestController
 @RequestMapping("/api/turmas")
-public class TurmaController {
+public class TurmaRest {
 
 	@Autowired
 	private TurmaRepository repository;

@@ -1,10 +1,12 @@
-package br.org.na.pedagogia.security;
+package br.org.na.pedagogia.repository.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
+
+import br.org.na.pedagogia.model.auth.Usuario;
 
 
 @Repository

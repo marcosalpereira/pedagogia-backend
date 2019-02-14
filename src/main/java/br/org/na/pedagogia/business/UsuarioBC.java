@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import br.org.na.pedagogia.security.PerfilRepository;
-import br.org.na.pedagogia.security.Usuario;
-import br.org.na.pedagogia.security.UsuarioRepository;
+import br.org.na.pedagogia.exception.AlreadyExistsException;
+import br.org.na.pedagogia.model.auth.Usuario;
+import br.org.na.pedagogia.repository.auth.PerfilRepository;
+import br.org.na.pedagogia.repository.auth.UsuarioRepository;
 
 @Service
 public class UsuarioBC {
@@ -35,6 +36,19 @@ public class UsuarioBC {
 					.map(perfil -> perfilRepository.findById(perfil.getId()).get())
 					.collect(Collectors.toSet())
 		);
+		Usuario entity = repository.save(usuario);
+		return entity.getId();
+	}
+
+	public Long solcitarAcesso(Usuario usuario) {
+		if (repository.findByEmail(usuario.getEmail()) != null) {
+			throw new AlreadyExistsException("Já existe Solicitação!");
+		}
+		
+		usuario.setEnabled(false);
+		usuario.setPerfils(null);
+		usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+		
 		Usuario entity = repository.save(usuario);
 		return entity.getId();
 	}
