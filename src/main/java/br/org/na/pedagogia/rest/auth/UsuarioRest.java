@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.business.UsuarioBC;
 import br.org.na.pedagogia.exception.NotFoundException;
+import br.org.na.pedagogia.model.Sede;
 import br.org.na.pedagogia.model.auth.Usuario;
 import br.org.na.pedagogia.repository.auth.UsuarioRepository;
 
@@ -41,9 +44,9 @@ public class UsuarioRest {
 		return usuarioBC.solcitarAcesso(usuario);
 	}
 	
-	@PostMapping("/signon-confirm")
+	@PostMapping("/enable")
 	@Secured("ROLE_ADMIN")
-	public void confirmarAcesso(@Valid @RequestBody Usuario user) {
+	public void enable(@Valid @RequestBody Usuario user) {
 		Usuario usuario = repository.findById(user.getId())
 			.orElseThrow(() -> new NotFoundException());
 		
@@ -67,8 +70,12 @@ public class UsuarioRest {
 	
 	@GetMapping
 	@Secured("ROLE_ADMIN")
-	public List<Usuario> findAll() {
-		return repository.findAll();
+	public List<Usuario> findAll(@RequestParam("idSede") long idSede, @RequestParam("enabled") Boolean enabled) {
+		Usuario usr = new Usuario();
+		usr.setSede(new Sede(idSede));
+		usr.setEnabled(enabled);
+		Example<Usuario> ex = Example.of(usr);
+		return repository.findAll(ex);
 	}
 
 	@GetMapping("/{email}")

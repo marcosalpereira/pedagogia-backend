@@ -29,7 +29,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "usuario", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 @Getter @Setter
-@JsonIgnoreProperties(value = { "senha", "password" }, allowSetters = true)
+@JsonIgnoreProperties(value = { "senha", "username", "password", "authorities", "accountNonExpired", "accountNonLocked", "credentialsNonExpired" }, allowSetters = true)
 public class Usuario extends BaseModel implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +46,7 @@ public class Usuario extends BaseModel implements UserDetails {
 	private String senha;
 	
 	@Column
-	private boolean enabled;
+	private Boolean enabled;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Sede sede;
@@ -86,7 +86,7 @@ public class Usuario extends BaseModel implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return enabled;
+		return enabled != null && enabled;
 	}
 
 }
