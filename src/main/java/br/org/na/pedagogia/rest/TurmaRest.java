@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.business.TurmaBC;
 import br.org.na.pedagogia.model.Aluno;
+import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.Materia;
 import br.org.na.pedagogia.model.Professor;
 import br.org.na.pedagogia.model.Turma;
@@ -35,9 +37,9 @@ public class TurmaRest {
 	
 	@GetMapping
 	public List<Turma> findAll(
-			@RequestParam("idSede") long idSede,
-			@RequestParam("diaSemana") DayOfWeek diaSemana) {
-		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana));
+			@RequestParam(name = "idSede", required = false) Long idSede,
+			@RequestParam(name = "diaSemana", required = false) DayOfWeek diaSemana) {
+		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana), BaseModel.MATCHER);
 		List<Turma> findAll = repository.findAll(ex);
 		return findAll;
 	}

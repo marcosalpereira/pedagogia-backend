@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.model.Aula;
+import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.repository.AulaRepository;
 
 
@@ -32,7 +33,7 @@ public class AulaRest {
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idMateria") long idMateria,
 			@NotNull @RequestParam("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data) {
-		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, data));
+		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, data), BaseModel.MATCHER);
 		return ResponseEntity.of(aulaRepository.findOne(ex));
 	}
 

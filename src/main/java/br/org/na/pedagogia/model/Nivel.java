@@ -26,7 +26,7 @@ public class Nivel extends BaseModel {
 	private String codigo;
 
 	@JsonManagedReference
-	@OneToMany(mappedBy = "nivel", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "nivel", fetch = FetchType.LAZY)
 	@OrderBy("nome")
 	private Set<Materia> materias;
 }

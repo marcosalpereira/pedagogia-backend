@@ -19,7 +19,7 @@ public class Sede extends BaseModel {
 	@Size(max = 100)
 	private String nome;
 
-	public Sede(long id) {
+	public Sede(Long id) {
 		super(id);
 	}
 

@@ -36,7 +36,7 @@ public class Turma extends BaseModel {
 
 	private static final long serialVersionUID = 1;
 	
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	private Sede sede;
 	
 	@NotNull
@@ -68,14 +68,14 @@ public class Turma extends BaseModel {
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek diaSemana;
 	
-	@ManyToOne(optional = false, fetch=FetchType.LAZY)
+	@ManyToOne(optional = false, fetch=FetchType.EAGER)
 	private Nivel nivel;
 	
 	public Turma(long id) {
 		super(id);
 	}
 	
-	public Turma(long idSede, DayOfWeek diaSemana) {
+	public Turma(Long idSede, DayOfWeek diaSemana) {
 		this.sede = new Sede(idSede);
 		this.diaSemana = diaSemana;
 	}

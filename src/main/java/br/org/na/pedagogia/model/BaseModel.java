@@ -43,7 +43,7 @@ public class BaseModel implements Serializable {
 	@Column(columnDefinition = "INTEGER DEFAULT 0")
 	private int version;
 
-	public BaseModel(long id) {
+	public BaseModel(Long id) {
 		this.id = id;
 	}
 	
