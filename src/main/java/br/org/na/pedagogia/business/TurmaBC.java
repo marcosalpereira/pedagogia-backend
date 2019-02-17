@@ -6,7 +6,6 @@ import java.util.function.Function;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import br.org.na.pedagogia.exception.NotFoundException;
@@ -34,11 +33,5 @@ public class TurmaBC {
 		return list;
 	}
 	
-	@Transactional
-	public <T> List<T> findOne(Example<Turma> ex, Function<Turma, List<T>> mapper) {
-		return repository.findOne(ex)
-				.map(t -> initializeList(mapper.apply(t)))
-				.orElseThrow(() -> new NotFoundException());
-	}
 	
 }

@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -60,11 +61,11 @@ public class Turma extends BaseModel {
 	@OneToMany(mappedBy = "turma", cascade = CascadeType.ALL)
 	private Set<MateriaTurma> materias;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	private Aluno representante;
 	
 	@NotNull
-	@Size(max = 15)
+	@Column(length = 15)
 	@Enumerated(EnumType.STRING)
 	private DayOfWeek diaSemana;
 	

@@ -30,7 +30,7 @@ public class EntregaTemaRest {
 	private EntregaTemaRepository repository;
 
 	@GetMapping
-	//TODO definir perfis @Secured("ADMIN")
+	//TODO definir perfis @Secured(?)
 	public List<EntregaTema> findAll(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idTema") long idTema
@@ -41,7 +41,7 @@ public class EntregaTemaRest {
 	}
 	
 	@GetMapping("last")
-	//TODO definir perfis @Secured("ADMIN")
+	//TODO definir perfis @Secured(?)
 	public ResponseEntity<Tema> findLastTemaEntregue(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idMateria") long idMateria
@@ -51,7 +51,7 @@ public class EntregaTemaRest {
 	
 
 	@PostMapping
-	//TODO definir perfis @Secured("ADMIN")
+	//TODO definir perfis @Secured(?)
 	public List<EntregaTema> registrarEntrega(@RequestBody @Valid List<EntregaTema> entregas) {
 		List<EntregaTema> entregasBD = repository.saveAll(entregas);
 		return entregasBD;
