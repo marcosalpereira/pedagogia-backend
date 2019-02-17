@@ -6,11 +6,11 @@
 
 	<groupId>br.org.na.pedagogia</groupId>
 	<artifactId>pedagogia-rest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>pedagodia</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Pedagogia</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

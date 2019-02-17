@@ -34,15 +34,9 @@ public class UsuarioRest {
 	@Autowired
 	private UsuarioBC usuarioBC;
 	
-	@PostMapping
-	@Secured("ROLE_ADMIN")
-	public Long save(@Valid @RequestBody Usuario usuario) {
-		return usuarioBC.save(usuario);
-	}
-	
 	@PostMapping("/signon")
 	public Long solicitarAcesso(@Valid @RequestBody Usuario usuario) {
-		return usuarioBC.solcitarAcesso(usuario);
+		return usuarioBC.solicitarAcesso(usuario);
 	}
 	
 	@PostMapping("/enable")
@@ -51,9 +45,8 @@ public class UsuarioRest {
 		Usuario usuario = repository.findById(user.getId())
 			.orElseThrow(() -> new NotFoundException());
 		
-		usuario.setEnabled(true);
 		usuario.setPerfils(user.getPerfils());
-		usuarioBC.save(usuario);
+		usuarioBC.habilitar(usuario);
 	}	
 	
 	@PostMapping("/{id}/senha")

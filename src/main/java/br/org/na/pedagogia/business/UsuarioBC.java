@@ -23,14 +23,9 @@ public class UsuarioBC {
 	private PerfilRepository perfilRepository;
 
 	@Transactional
-	public Long save(Usuario usuario) {
-		if (usuario.getSenha() != null) {
-			if (usuario.getSenha().matches(" *")) {
-				usuario.setSenha(null);
-			} else {
-				usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-			}
-		}
+	public Long habilitar(Usuario usuario) {
+		usuario.setEnabled(true);
+
 		usuario.setPerfils(
 				usuario.getPerfils().stream()
 					.map(perfil -> perfilRepository.findById(perfil.getId()).get())
@@ -40,7 +35,7 @@ public class UsuarioBC {
 		return entity.getId();
 	}
 
-	public Long solcitarAcesso(Usuario usuario) {
+	public Long solicitarAcesso(Usuario usuario) {
 		if (repository.findByEmail(usuario.getEmail()) != null) {
 			throw new AlreadyExistsException("Já existe Solicitação!");
 		}

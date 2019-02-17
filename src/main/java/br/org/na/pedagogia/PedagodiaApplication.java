@@ -15,6 +15,9 @@ public class PedagodiaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PedagodiaApplication.class, args);
+		//j@lNa@Fortaleza
+//		String s = new BCryptPasswordEncoder().encode("jpan-diana");
+//		System.out.println(s);
 	}
 
 	@Bean
