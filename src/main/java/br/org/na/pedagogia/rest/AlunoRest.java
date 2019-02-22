@@ -44,11 +44,13 @@ public class AlunoRest {
 	public ResponseEntity<Aluno> findById(@PathVariable("id") Long id) {
 		return ResponseEntity.of(repository.findById(id));
 	}
-	
+		
 	@GetMapping("/{matricula}/foto")
 	public ResponseEntity<InputStreamResource> getFoto(@PathVariable("matricula") Integer matricula) {
 		try {
-			FileUrlResource imgFile = new FileUrlResource("/home/marcos/tmp/fotos/" + matricula + ".jpg");
+			String location = "/home/marcos/tmp/fotos/" + matricula + ".jpg";
+			location = "/home/54706424372/Documentos/Imagens/me-ajuste-cor.jpg";
+			FileUrlResource imgFile = new FileUrlResource(location);
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
 					.body(new InputStreamResource(imgFile.getInputStream()));
 		} catch (IOException e) {
