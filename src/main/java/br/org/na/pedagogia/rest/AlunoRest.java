@@ -1,10 +1,14 @@
 package br.org.na.pedagogia.rest;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileUrlResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.na.pedagogia.exception.NotFoundException;
 import br.org.na.pedagogia.model.Aluno;
 import br.org.na.pedagogia.repository.AlunoRepository;
 
@@ -38,6 +43,17 @@ public class AlunoRest {
 	@GetMapping("/{id}")
 	public ResponseEntity<Aluno> findById(@PathVariable("id") Long id) {
 		return ResponseEntity.of(repository.findById(id));
+	}
+	
+	@GetMapping("/{matricula}/foto")
+	public ResponseEntity<InputStreamResource> getFoto(@PathVariable("matricula") Integer matricula) {
+		try {
+			FileUrlResource imgFile = new FileUrlResource("/home/marcos/tmp/fotos/" + matricula + ".jpg");
+			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
+					.body(new InputStreamResource(imgFile.getInputStream()));
+		} catch (IOException e) {
+			throw new NotFoundException();
+		}
 	}
 
 }
