@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.na.pedagogia.Config;
 import br.org.na.pedagogia.exception.NotFoundException;
 import br.org.na.pedagogia.model.Aluno;
 import br.org.na.pedagogia.repository.AlunoRepository;
@@ -25,6 +26,9 @@ import br.org.na.pedagogia.repository.AlunoRepository;
 @RestController
 @RequestMapping("/api/alunos")
 public class AlunoRest {
+	
+	@Autowired
+	private Config config;
 
 	@Autowired
 	private AlunoRepository repository;
@@ -48,8 +52,8 @@ public class AlunoRest {
 	@GetMapping("/{matricula}/foto")
 	public ResponseEntity<InputStreamResource> getFoto(@PathVariable("matricula") Integer matricula) {
 		try {
-			String location = "/home/marcos/tmp/fotos/" + matricula + ".jpg";
-			location = "/home/54706424372/Documentos/Imagens/me-ajuste-cor.jpg";
+			String rootFolder = config.getRootFolder();
+			String location = String.format("%s/fotos/%d.jpg", rootFolder, matricula);
 			FileUrlResource imgFile = new FileUrlResource(location);
 			return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
 					.body(new InputStreamResource(imgFile.getInputStream()));

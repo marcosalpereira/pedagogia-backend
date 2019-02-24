@@ -1,3 +1,5 @@
+app.data-root-folder: /home/marcos/data-root-folder
+
 server:
   port: 8443
   servlet:
