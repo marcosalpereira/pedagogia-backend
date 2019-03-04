@@ -1,1 +1,7 @@
 app.data-root-folder: /home/m4rt3/data
+
+server:
+  ssl:
+    key-store: /etc/letsencrypt/live/nafortaleza.com.br/keystore.p12
+    key-store-type: PKCS12
+
