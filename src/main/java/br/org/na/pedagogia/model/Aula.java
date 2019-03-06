@@ -37,7 +37,6 @@ public class Aula extends BaseModel {
 	@ManyToOne
 	private Turma turma;
 	
-	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
