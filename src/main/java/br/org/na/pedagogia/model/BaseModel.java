@@ -31,8 +31,8 @@ public class BaseModel implements Serializable {
 	private Long id;
 	
 	@Version
-	@Column(insertable=false, columnDefinition = "INTEGER DEFAULT 0")
-	private Integer version;
+	@Column(columnDefinition = "INTEGER DEFAULT 0")
+	private Integer version = 0;
 
 	public BaseModel(Long id) {
 		this.id = id;

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.org.na.pedagogia.model.Aula;
+import br.org.na.pedagogia.repository.AlunoRepository;
 import br.org.na.pedagogia.repository.AulaRepository;
 import br.org.na.pedagogia.repository.CapituloRepository;
 import br.org.na.pedagogia.repository.MateriaRepository;
@@ -21,10 +22,16 @@ public class AulaBC {
 
 	@Autowired
 	private MateriaRepository materiaRepository;
+	
+	@Autowired
+	private AlunoRepository alunoRepository;	
 
 	@Transactional
 	public Aula registrarAula(Aula aula) {
-		aula.getPresencas().forEach(p -> p.setAula(aula));
+		aula.getPresencas().forEach(p -> {
+			p.setAula(aula);
+			p.setAluno(alunoRepository.findById(p.getAluno().getId()).get());
+		});
 		if (aula.getCapitulo() != null) {
 			aula.setCapitulo(capituloRepository.getOne(aula.getCapitulo().getId()));
 		}

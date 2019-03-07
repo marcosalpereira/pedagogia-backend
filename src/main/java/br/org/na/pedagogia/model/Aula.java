@@ -43,7 +43,6 @@ public class Aula extends BaseModel {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
-	@NotNull
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
 
@@ -59,6 +58,10 @@ public class Aula extends BaseModel {
 		this.turma = new Turma(idTurma);
 		this.materia = new Materia(materia);
 		this.data = data;
+		
+		setVersion(null);
+		this.turma.setVersion(null);
+		this.materia.setVersion(null);
 	}
 
 }
