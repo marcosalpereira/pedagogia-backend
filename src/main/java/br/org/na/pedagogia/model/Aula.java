@@ -15,6 +15,8 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.util.Assert;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,7 +38,8 @@ public class Aula extends BaseModel {
 	@NotNull
 	@ManyToOne
 	private Turma turma;
-	
+
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
@@ -44,7 +47,6 @@ public class Aula extends BaseModel {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL)
 	private List<Presenca> presencas;
 
-	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Capitulo capitulo;
 
@@ -52,7 +54,7 @@ public class Aula extends BaseModel {
 	private String observacao;
 
 	public Aula(long idTurma, long materia, Date data) {
-		assert data != null;
+		Assert.notNull(data, "Data não pode ser nula");
 
 		this.turma = new Turma(idTurma);
 		this.materia = new Materia(materia);

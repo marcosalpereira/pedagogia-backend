@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.na.pedagogia.business.AulaBC;
 import br.org.na.pedagogia.model.Aula;
-import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.repository.AulaRepository;
 
 
@@ -28,20 +28,22 @@ public class AulaRest {
 	@Autowired
 	private AulaRepository aulaRepository;
 
+	@Autowired
+	private AulaBC aulaBC;
+
 	@GetMapping
 	public ResponseEntity<Aula> find(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idMateria") long idMateria,
 			@NotNull @RequestParam("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data) {
-		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, data), BaseModel.MATCHER);
+		
+		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, data));
 		return ResponseEntity.of(aulaRepository.findOne(ex));
 	}
 
 	@PostMapping
 	public Aula registrarAula(@RequestBody @Valid Aula aula) {
-		aula.getPresencas().forEach(p -> p.setAula(aula));
-		Aula entity = aulaRepository.save(aula);
-		return entity;
+		return aulaBC.registrarAula(aula);
 	}
 
 }

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.business.UsuarioBC;
 import br.org.na.pedagogia.exception.NotFoundException;
-import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.Sede;
 import br.org.na.pedagogia.model.auth.Usuario;
 import br.org.na.pedagogia.repository.auth.UsuarioRepository;
@@ -68,7 +67,7 @@ public class UsuarioRest {
 		Usuario usr = new Usuario();
 		usr.setSede(new Sede(idSede));
 		usr.setEnabled(enabled);
-		Example<Usuario> ex = Example.of(usr, BaseModel.MATCHER);
+		Example<Usuario> ex = Example.of(usr);
 		return repository.findAll(ex);
 	}
 
