@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.na.pedagogia.business.UsuarioBC;
 import br.org.na.pedagogia.exception.NotFoundException;
-import br.org.na.pedagogia.model.Sede;
 import br.org.na.pedagogia.model.auth.Usuario;
 import br.org.na.pedagogia.repository.auth.UsuarioRepository;
 
@@ -64,10 +63,8 @@ public class UsuarioRest {
 	@GetMapping
 	@Secured("ROLE_ADMIN")
 	public List<Usuario> findAll(@RequestParam("idSede") long idSede, @RequestParam("enabled") Boolean enabled) {
-		Usuario usr = new Usuario();
-		usr.setSede(new Sede(idSede));
-		usr.setEnabled(enabled);
-		Example<Usuario> ex = Example.of(usr);
+		
+		Example<Usuario> ex = Usuario.example(idSede, enabled);
 		return repository.findAll(ex);
 	}
 

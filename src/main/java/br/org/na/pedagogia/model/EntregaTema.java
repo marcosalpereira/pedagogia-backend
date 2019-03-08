@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.domain.Example;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,9 +39,19 @@ public class EntregaTema extends BaseModel {
 	@Column
 	private Date data;
 
-	public EntregaTema(long idTurma, long idTema) {
-		turma = new Turma(idTurma);
-		tema = new Tema(idTema);
+	public static Example<EntregaTema> example(long idTurma, long idTema) {
+		Turma turma = new Turma(idTurma);
+		turma.setVersion(null);
+		
+		Tema tema = new Tema(idTema);
+		tema.setVersion(null);
+
+		EntregaTema entrega = new EntregaTema();
+		entrega.setVersion(null);		
+		entrega.setTurma(turma);
+		entrega.setTema(tema);
+		
+		return Example.of(entrega);
 	}
 
 }

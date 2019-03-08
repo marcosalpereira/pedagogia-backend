@@ -42,11 +42,11 @@ public class TurmaRest {
 	public List<Turma> findAll(
 			@RequestParam(name = "idSede", required = false) Long idSede,
 			@RequestParam(name = "diaSemana", required = false) DayOfWeek diaSemana) {
-		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana));
+		Example<Turma> ex = Turma.example(idSede, diaSemana);
 		List<Turma> findAll = repository.findAll(ex, Sort.by(Order.asc("nome")));
 		return findAll;
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<Turma> findOne(@PathVariable("id") long idTurma) {
 		return ResponseEntity.of(repository.findById(idTurma));

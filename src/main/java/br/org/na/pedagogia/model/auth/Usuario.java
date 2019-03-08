@@ -16,6 +16,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.domain.Example;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -87,6 +88,18 @@ public class Usuario extends BaseModel implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return enabled != null && enabled;
+	}
+
+	public static Example<Usuario> example(long idSede, Boolean enabled) {
+		Sede sede = new Sede(idSede);
+		sede.setVersion(null);
+		
+		Usuario usr = new Usuario();
+		usr.setVersion(null);
+		usr.setSede(sede);
+		usr.setEnabled(enabled);
+		
+		return Example.of(usr);
 	}
 
 }

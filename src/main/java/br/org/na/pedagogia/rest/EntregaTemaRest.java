@@ -34,7 +34,7 @@ public class EntregaTemaRest {
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idTema") long idTema
 			) {
-		Example<EntregaTema> ex = Example.of(new EntregaTema(idTurma, idTema));
+		Example<EntregaTema> ex = EntregaTema.example(idTurma, idTema);
 		List<EntregaTema> entregasBD = repository.findAll(ex, Sort.by(Order.asc("aluno.nome")));
 		return entregasBD;
 	}

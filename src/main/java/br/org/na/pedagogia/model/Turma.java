@@ -20,6 +20,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.domain.Example;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -76,11 +78,6 @@ public class Turma extends BaseModel {
 		super(id);
 	}
 	
-	public Turma(Long idSede, DayOfWeek diaSemana) {
-		this.sede = new Sede(idSede);
-		this.diaSemana = diaSemana;
-	}
-
 	public List<Professor> getProfessores() {
 		if (materias == null) return Collections.emptyList();
 		return materias.stream().map(mt -> mt.getProfessor()).collect(Collectors.toList());
@@ -89,6 +86,18 @@ public class Turma extends BaseModel {
 	public List<Materia> getMaterias() {
 		if (materias == null) return Collections.emptyList();
 		return materias.stream().map(mt -> mt.getMateria()).collect(Collectors.toList());
+	}
+
+	public static Example<Turma> example(Long idSede, DayOfWeek diaSemana) {
+		Sede sede = new Sede(idSede);
+		sede.setVersion(null);
+		
+		Turma turma = new Turma();
+		turma.setVersion(null);		
+		turma.setDiaSemana(diaSemana);
+		turma.setSede(sede);
+		
+		return Example.of(turma);
 	}
 	
 	

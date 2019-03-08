@@ -15,6 +15,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.domain.Example;
 import org.springframework.util.Assert;
 
 import lombok.Getter;
@@ -37,13 +38,14 @@ public class Aula extends BaseModel {
 
 	@NotNull
 	@ManyToOne
+	//TODO sera que se os outros fossem EAGER seria mais simples
 	private Turma turma;
 
 	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Materia materia;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "aula", cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<Presenca> presencas;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -52,16 +54,23 @@ public class Aula extends BaseModel {
 	@Size(max = 300)
 	private String observacao;
 
-	public Aula(long idTurma, long materia, Date data) {
+
+	public static Example<Aula> example(long idTurma, long idMateria, @NotNull Date data) {
 		Assert.notNull(data, "Data não pode ser nula");
 
-		this.turma = new Turma(idTurma);
-		this.materia = new Materia(materia);
-		this.data = data;
+		Turma turma = new Turma(idTurma);
+		turma.setVersion(null);
 		
-		setVersion(null);
-		this.turma.setVersion(null);
-		this.materia.setVersion(null);
+		Materia materia = new Materia(idMateria);
+		materia.setVersion(null);
+		
+		Aula aula = new Aula();
+		aula.setVersion(null);
+		aula.setTurma(turma);
+		aula.setMateria(materia);
+		aula.setData(data);
+		
+		return Example.of(aula);
 	}
 
 }
