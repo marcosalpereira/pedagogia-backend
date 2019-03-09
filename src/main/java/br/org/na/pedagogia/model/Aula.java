@@ -1,5 +1,7 @@
 package br.org.na.pedagogia.model;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +40,6 @@ public class Aula extends BaseModel {
 
 	@NotNull
 	@ManyToOne
-	//TODO sera que se os outros fossem EAGER seria mais simples
 	private Turma turma;
 
 	@NotNull
@@ -71,6 +72,15 @@ public class Aula extends BaseModel {
 		aula.setData(data);
 		
 		return Example.of(aula);
+	}
+
+
+	public void sortPresencasPorNomeAluno() {
+		Collections.sort(presencas, new Comparator<Presenca>() {
+			public int compare(Presenca o1, Presenca o2) {
+				return o1.getNomeAluno().compareTo(o2.getNomeAluno());
+			}
+		});
 	}
 
 }

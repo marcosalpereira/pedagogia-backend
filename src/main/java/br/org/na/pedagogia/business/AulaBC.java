@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
 import br.org.na.pedagogia.model.Aula;
+import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.Presenca;
 import br.org.na.pedagogia.repository.AlunoRepository;
 import br.org.na.pedagogia.repository.AulaRepository;
@@ -34,34 +36,47 @@ public class AulaBC {
 	private TurmaRepository turmaRepository;
 
 	@Transactional
-	public Aula registrarAula(Aula aula) {
-		final Aula e;
-		if (aula.getId() != null) {
-			e = aulaRepository.findById(aula.getId()).get();
-			e.getPresencas().clear();
+	public Aula registrarAula(Aula pAula) {
+		final Aula aula;
+		if (pAula.getId() != null) {
+			aula = findById(aulaRepository, pAula);
+			aula.sortPresencasPorNomeAluno();
+			
+			aula.getPresencas().forEach(presenca -> {
+				Presenca pPresenca = pAula.getPresencas().stream()
+					.filter(p -> p.getId().equals(presenca.getId()))
+					.findFirst().get();
+				presenca.setPresente(pPresenca.getPresente());
+			});
+			
 		} else {
-			e = new Aula();
-			e.setPresencas(new ArrayList<>());
-			e.setData(aula.getData());
-			e.setObservacao(aula.getObservacao());
-			e.setTurma(turmaRepository.findById(aula.getTurma().getId()).get());
-			e.setMateria(materiaRepository.findById(aula.getMateria().getId()).get());
+			aula = new Aula();
+			aula.setPresencas(new ArrayList<>());
+			aula.setData(pAula.getData());
+			aula.setTurma(findById(turmaRepository, pAula.getTurma()));
+			aula.setMateria(findById(materiaRepository, pAula.getMateria()));
+			
+			pAula.getPresencas().forEach(pPresenca -> {
+				Presenca presenca = new Presenca();
+				aula.getPresencas().add(presenca);
+				presenca.setAula(aula);
+				presenca.setAluno(findById(alunoRepository, pPresenca.getAluno()));
+				presenca.setPresente(pPresenca.getPresente());
+			});
+			
 		}
-		aula.getPresencas().forEach(p -> {
-			Presenca pp = new Presenca();
-			e.getPresencas().add(pp);
-			pp.setAula(e);
-			pp.setAluno(alunoRepository.findById(p.getAluno().getId()).get());
-			pp.setPresente(p.getPresente());
-		});
-		if (aula.getCapitulo() != null) {
-			e.setCapitulo(capituloRepository.findById(aula.getCapitulo().getId()).get());
+		if (pAula.getCapitulo() != null) {
+			aula.setCapitulo(findById(capituloRepository, pAula.getCapitulo()));
 		} else {
-			e.setCapitulo(null);
+			aula.setCapitulo(null);
 		}
+		aula.setObservacao(pAula.getObservacao());
 		
-		Aula entity = aulaRepository.save(e);
-		return entity;
+		return aulaRepository.save(aula);
+	}
+	
+	private <T extends BaseModel> T findById(JpaRepository<T, Long> repo, T entity) {
+		return repo.findById(entity.getId()).get();
 	}
 
 }

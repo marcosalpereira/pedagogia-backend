@@ -1,6 +1,7 @@
 package br.org.na.pedagogia.rest;
 
 import java.util.Date;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -38,7 +39,11 @@ public class AulaRest {
 			@NotNull @RequestParam("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data) {
 		
 		Example<Aula> ex = Aula.example(idTurma, idMateria, data);
-		return ResponseEntity.of(aulaRepository.findOne(ex));
+		Optional<Aula> aula = aulaRepository.findOne(ex);
+		if (aula.isPresent()) {
+			aula.get().sortPresencasPorNomeAluno();
+		}
+		return ResponseEntity.of(aula);
 	}
 
 	@PostMapping

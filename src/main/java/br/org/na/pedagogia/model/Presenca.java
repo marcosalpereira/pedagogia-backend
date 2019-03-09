@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "presenca")
 @Getter @Setter
-//@JsonIgnoreProperties(value = {"aula"}, allowSetters=true)
+@JsonIgnoreProperties(value = {"nomeAluno"})
 public class Presenca extends BaseModel {
 
 	private static final long serialVersionUID = 1L;
@@ -31,5 +32,9 @@ public class Presenca extends BaseModel {
 	
 	@Column
 	private Boolean presente;
+
+	public String getNomeAluno() {
+		return aluno.getNome();
+	}
 	
 }
