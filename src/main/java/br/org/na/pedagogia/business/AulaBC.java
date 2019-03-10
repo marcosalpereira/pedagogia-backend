@@ -40,8 +40,6 @@ public class AulaBC {
 		final Aula aula;
 		if (pAula.getId() != null) {
 			aula = findById(aulaRepository, pAula);
-			aula.sortPresencasPorNomeAluno();
-			
 			aula.getPresencas().forEach(presenca -> {
 				Presenca pPresenca = pAula.getPresencas().stream()
 					.filter(p -> p.getId().equals(presenca.getId()))

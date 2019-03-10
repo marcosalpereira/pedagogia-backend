@@ -40,9 +40,6 @@ public class AulaRest {
 		
 		Example<Aula> ex = Aula.example(idTurma, idMateria, data);
 		Optional<Aula> aula = aulaRepository.findOne(ex);
-		if (aula.isPresent()) {
-			aula.get().sortPresencasPorNomeAluno();
-		}
 		return ResponseEntity.of(aula);
 	}
 
