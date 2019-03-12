@@ -1,6 +1,7 @@
 package br.org.na.pedagogia.rest;
 
 import java.util.Date;
+import java.util.Optional;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.na.pedagogia.business.AulaBC;
 import br.org.na.pedagogia.model.Aula;
-import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.repository.AulaRepository;
 
 
@@ -27,21 +28,24 @@ public class AulaRest {
 
 	@Autowired
 	private AulaRepository aulaRepository;
-
+	
+	@Autowired
+	private AulaBC aulaBC;
+	
 	@GetMapping
 	public ResponseEntity<Aula> find(
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idMateria") long idMateria,
 			@NotNull @RequestParam("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data) {
-		Example<Aula> ex = Example.of(new Aula(idTurma, idMateria, data), BaseModel.MATCHER);
-		return ResponseEntity.of(aulaRepository.findOne(ex));
+		
+		Example<Aula> ex = Aula.example(idTurma, idMateria, data);
+		Optional<Aula> aula = aulaRepository.findOne(ex);
+		return ResponseEntity.of(aula);
 	}
 
 	@PostMapping
 	public Aula registrarAula(@RequestBody @Valid Aula aula) {
-		aula.getPresencas().forEach(p -> p.setAula(aula));
-		Aula entity = aulaRepository.save(aula);
-		return entity;
+		return aulaBC.registrarAula(aula);
 	}
 
 }

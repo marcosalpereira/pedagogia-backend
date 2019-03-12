@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.org.na.pedagogia.business.TurmaBC;
 import br.org.na.pedagogia.exception.NotFoundException;
 import br.org.na.pedagogia.model.Aluno;
-import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.Materia;
 import br.org.na.pedagogia.model.Professor;
 import br.org.na.pedagogia.model.Turma;
@@ -43,11 +42,11 @@ public class TurmaRest {
 	public List<Turma> findAll(
 			@RequestParam(name = "idSede", required = false) Long idSede,
 			@RequestParam(name = "diaSemana", required = false) DayOfWeek diaSemana) {
-		Example<Turma> ex = Example.of(new Turma(idSede, diaSemana), BaseModel.MATCHER);
+		Example<Turma> ex = Turma.example(idSede, diaSemana);
 		List<Turma> findAll = repository.findAll(ex, Sort.by(Order.asc("nome")));
 		return findAll;
 	}
-	
+
 	@GetMapping("{id}")
 	public ResponseEntity<Turma> findOne(@PathVariable("id") long idTurma) {
 		return ResponseEntity.of(repository.findById(idTurma));

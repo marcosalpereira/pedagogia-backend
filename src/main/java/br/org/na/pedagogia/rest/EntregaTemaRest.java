@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.na.pedagogia.model.BaseModel;
 import br.org.na.pedagogia.model.EntregaTema;
 import br.org.na.pedagogia.model.Tema;
 import br.org.na.pedagogia.repository.EntregaTemaRepository;
@@ -35,7 +34,7 @@ public class EntregaTemaRest {
 			@RequestParam("idTurma") long idTurma,
 			@RequestParam("idTema") long idTema
 			) {
-		Example<EntregaTema> ex = Example.of(new EntregaTema(idTurma, idTema), BaseModel.MATCHER);
+		Example<EntregaTema> ex = EntregaTema.example(idTurma, idTema);
 		List<EntregaTema> entregasBD = repository.findAll(ex, Sort.by(Order.asc("aluno.nome")));
 		return entregasBD;
 	}
